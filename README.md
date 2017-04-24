@@ -4,4 +4,4 @@ Team project for CS340 at OSU
 * Michael Elliott
 * Hayden Anderson
 * Albert Morgan
-* Alex Ruefs
+* Alex Ruef
