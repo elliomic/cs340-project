@@ -1,9 +1,9 @@
+DROP TABLE IF EXISTS address_plans;
 DROP TABLE IF EXISTS subscriptions;
 DROP TABLE IF EXISTS plans;
 DROP TABLE IF EXISTS billing_info;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS addresses;
-DROP TABLE IF EXISTS address_plans;
 DROP TABLE IF EXISTS employees;
 
 
@@ -50,7 +50,7 @@ CREATE TABLE subscriptions (
 	billing_id		INT,
 	customer_id		INT,
 	plan_id			INT,
-	address_Id		INT,
+	address_id		INT,
 	PRIMARY KEY (plan_id, address_id), -- Can't subscribe to the same plan at the same address
 	FOREIGN KEY (billing_id) REFERENCES billing_info(id),
 	FOREIGN KEY (customer_id) REFERENCES customers(id),
@@ -73,5 +73,7 @@ CREATE TABLE plans (
 CREATE TABLE address_plans (
 	plan_id			INT NOT NULL,
 	address_id		INT NOT NULL,
-	PRIMARY KEY (plan_id, address_id)
+	PRIMARY KEY (plan_id, address_id),
+	FOREIGN KEY (plan_id) REFERENCES plans(id),
+	FOREIGN KEY (address_id) REFERENCES addresses(id)
 ) ENGINE=InnoDB;
