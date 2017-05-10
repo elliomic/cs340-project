@@ -19,7 +19,7 @@ CREATE TABLE addresses (
 	id				INT AUTO_INCREMENT NOT NULL,
 	num				INT NOT NULL,
 	street			VARCHAR(255) NOT NULL,
-	st				CHAR(2) NOT NULL,
+	state				CHAR(2) NOT NULL,
 	city			VARCHAR(255) NOT NULL,
 	zip				DECIMAL(5) NOT NULL,
 	apt_no			DECIMAL(3),
