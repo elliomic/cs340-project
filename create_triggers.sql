@@ -1,31 +1,31 @@
-DROP TRIGGER IF EXISTS Plans_Delete;
-DROP TRIGGER IF EXISTS billing_Delete_subscription;
-DROP TRIGGER IF EXISTS Addresses_Delete;
-DROP TRIGGER IF EXISTS Customers_Delete;
+DROP TRIGGER IF EXISTS Plan_Delete;
+DROP TRIGGER IF EXISTS Billing_Delete_Subscription;
+DROP TRIGGER IF EXISTS Address_Delete;
+DROP TRIGGER IF EXISTS Customer_Delete;
 
-CREATE TRIGGER `billing_Delete_subscription` BEFORE DELETE ON `billing_info`
- FOR EACH ROW DELETE FROM subscriptions WHERE old.id = subscriptions.billing_id;
+CREATE TRIGGER `Billing_Delete_Subscription` BEFORE DELETE ON `Billing_Info`
+ FOR EACH ROW DELETE FROM Subscription WHERE old.id = Subscription.billing_id;
  
- DELIMITER $$
- CREATE TRIGGER `Plans_Delete` BEFORE DELETE ON `plans`
+DELIMITER $$
+CREATE TRIGGER `Plan_Delete` BEFORE DELETE ON `Plan`
  FOR EACH ROW BEGIN
-DELETE FROM address_plans WHERE old.id = address_plans.plan_id;
-DELETE FROM subscriptions WHERE old.id = subscriptions.plan_id;
+  DELETE FROM Address_Plans WHERE old.id = Address_Plans.plan_id;
+  DELETE FROM Subscription WHERE old.id = Subscription.plan_id;
 END
 $$
 
- DELIMITER $$
-CREATE TRIGGER `Addresses_Delete` BEFORE DELETE ON `addresses`
+DELIMITER $$
+CREATE TRIGGER `Address_Delete` BEFORE DELETE ON `Address`
  FOR EACH ROW BEGIN
-DELETE FROM address_plans WHERE old.id = address_plans.address_id;
-DELETE FROM subscriptions WHERE old.id = subscriptions.address_id;
+  DELETE FROM Address_Plans WHERE old.id = Address_Plans.address_id;
+  DELETE FROM Subscription WHERE old.id = Subscription.address_id;
 END
 $$
 
- DELIMITER $$
-CREATE TRIGGER `Customers_Delete` BEFORE DELETE ON `customers`
+DELIMITER $$
+CREATE TRIGGER `Customer_Delete` BEFORE DELETE ON `Customer`
  FOR EACH ROW BEGIN
-DELETE FROM subscriptions WHERE old.id = subscriptions.customer_id;
-DELETE FROM billing_info WHERE old.id = billing_info.user_id;
+  DELETE FROM Subscription WHERE old.id = Subscription.customer_id;
+  DELETE FROM Billing_Info WHERE old.id = Billing_Info.user_id;
 END
 $$
