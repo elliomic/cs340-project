@@ -32,7 +32,7 @@ CREATE TABLE customers (
 	name			VARCHAR(255) NOT NULL,
 	address_id		INT,
 	PRIMARY KEY (id),
-	FOREIGN KEY (address_id) REFERENCES addresses(id)
+	FOREIGN KEY (address_id) REFERENCES addresses(id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE billing_info (
@@ -43,7 +43,7 @@ CREATE TABLE billing_info (
 	name			VARCHAR(255) NOT NULL,
 	user_id			INT NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (user_id) REFERENCES customers(id)
+	FOREIGN KEY (user_id) REFERENCES customers(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE subscriptions (
@@ -52,9 +52,9 @@ CREATE TABLE subscriptions (
 	plan_id			INT,
 	address_id		INT,
 	PRIMARY KEY (plan_id, address_id), -- Can't subscribe to the same plan at the same address
-	FOREIGN KEY (billing_id) REFERENCES billing_info(id),
-	FOREIGN KEY (customer_id) REFERENCES customers(id),
-	FOREIGN KEY (address_id) REFERENCES addresses(id)
+	FOREIGN KEY (billing_id) REFERENCES billing_info(id) ON DELETE CASCADE,
+	FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE,
+	FOREIGN KEY (address_id) REFERENCES addresses(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE plans (
@@ -64,7 +64,7 @@ CREATE TABLE plans (
 	speed			INT,
 	added_by		INT,
 	PRIMARY KEY (id),
-	FOREIGN KEY (added_by) REFERENCES employees(id)
+	FOREIGN KEY (added_by) REFERENCES employees(id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
 -- Junction table between addresses and plans
@@ -74,6 +74,6 @@ CREATE TABLE address_plans (
 	plan_id			INT NOT NULL,
 	address_id		INT NOT NULL,
 	PRIMARY KEY (plan_id, address_id),
-	FOREIGN KEY (plan_id) REFERENCES plans(id),
-	FOREIGN KEY (address_id) REFERENCES addresses(id)
+	FOREIGN KEY (plan_id) REFERENCES plans(id) ON DELETE CASCADE,
+	FOREIGN KEY (address_id) REFERENCES addresses(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
