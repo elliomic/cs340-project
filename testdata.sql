@@ -1,11 +1,17 @@
-INSERT INTO Employee (username, salary, name)
-VALUES ('hulk', 20000, 'Bruce Banner'), ('ironman', 200000, 'Tony Stark');
+INSERT INTO Employee (username, salary, name, pass)
+VALUES ('hulk', 20000, 'Bruce Banner', MD5('smash')), ('ironman', 200000, 'Tony Stark',MD5('hunter2'));
 
 INSERT INTO Address (num, street, state, city, zip, apt_no)
 VALUES (1234,'SW GreenMachine Dr.','NY','New York',97111,NULL), (555,'SW malibu Pl', 'CA', 'Los Angeles',97000,3), (000,'space GXY', 'MW', 'Milky Way',00000, NULL);
 
 INSERT INTO Customer (username, name, address_id)
 VALUES ('hulk','Bruce Banner',1), ('ironman','Tony Stark',2),('starlord','Peter Quill',3);
+
+INSERT INTO Customer (username, name, address_id, pass)
+VALUES ('bob', 'Bob', 1, MD5('password123'));
+
+INSERT INTO Customer (username, name, address_id, pass)
+VALUES ('bob5', 'Bob', 1, 'password123');
 
 INSERT INTO Billing_Info (cc_number, cc_type, expiration_date, name, user_id)
 VALUES ('12345678910', 'VISA', '6/20/1994', 'Bruce Banner', 1), ('10987654321','MASTERCARD', '5/10/2017','Tony Stark',2),('1111111111111111','BUCKS','12/31/9999','Peter Quill',3);
