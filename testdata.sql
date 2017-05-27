@@ -10,6 +10,9 @@ VALUES ('hulk','Bruce Banner',1), ('ironman','Tony Stark',2),('starlord','Peter 
 INSERT INTO Customer (username, name, address_id, pass_hash)
 VALUES ('bob', 'Bob', 1, PASSWORD('password123'));
 
+INSERT INTO Customer (username, name, address_id, pass_hash)
+VALUES ('bob5', 'Bob', 1, 'password123');
+
 INSERT INTO Billing_Info (cc_number, cc_type, expiration_date, name, user_id)
 VALUES ('12345678910', 'VISA', '6/20/1994', 'Bruce Banner', 1), ('10987654321','MASTERCARD', '5/10/2017','Tony Stark',2),('1111111111111111','BUCKS','12/31/9999','Peter Quill',3);
 
