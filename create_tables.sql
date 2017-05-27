@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS Employee;
 CREATE TABLE Employee (
 	id				INT AUTO_INCREMENT NOT NULL,
 	username		VARCHAR(255) UNIQUE NOT NULL,
-    pass_hash       BINARY(60) NOT NULL,
+    	pass			CHAR(32),
 	salary			INT,
 	name			VARCHAR(255),
 	PRIMARY KEY	(id)
@@ -30,7 +30,7 @@ CREATE TABLE Address (
 CREATE TABLE Customer (
 	id				INT AUTO_INCREMENT NOT NULL,
 	username		VARCHAR(255) UNIQUE NOT NULL,
-    pass_hash       BINARY(60) NOT NULL,
+    	pass			CHAR(32),
     name			VARCHAR(255) NOT NULL,
 	address_id		INT,
 	PRIMARY KEY (id),
