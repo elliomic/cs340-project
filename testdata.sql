@@ -8,7 +8,7 @@ INSERT INTO Customer (username, name, address_id)
 VALUES ('hulk','Bruce Banner',1), ('ironman','Tony Stark',2),('starlord','Peter Quill',3);
 
 INSERT INTO Customer (username, name, address_id, pass_hash)
-VALUES ('bob', 'Bob', 1, PASSWORD('password123'));
+VALUES ('bob', 'Bob', 1, MD5('password123'));
 
 INSERT INTO Customer (username, name, address_id, pass_hash)
 VALUES ('bob5', 'Bob', 1, 'password123');
