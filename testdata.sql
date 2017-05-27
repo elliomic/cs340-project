@@ -7,10 +7,10 @@ VALUES (1234,'SW GreenMachine Dr.','NY','New York',97111,NULL), (555,'SW malibu 
 INSERT INTO Customer (username, name, address_id)
 VALUES ('hulk','Bruce Banner',1), ('ironman','Tony Stark',2),('starlord','Peter Quill',3);
 
-INSERT INTO Customer (username, name, address_id, pass_hash)
+INSERT INTO Customer (username, name, address_id, pass)
 VALUES ('bob', 'Bob', 1, MD5('password123'));
 
-INSERT INTO Customer (username, name, address_id, pass_hash)
+INSERT INTO Customer (username, name, address_id, pass)
 VALUES ('bob5', 'Bob', 1, 'password123');
 
 INSERT INTO Billing_Info (cc_number, cc_type, expiration_date, name, user_id)
