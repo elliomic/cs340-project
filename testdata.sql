@@ -1,5 +1,5 @@
-INSERT INTO Employee (username, salary, name)
-VALUES ('hulk', 20000, 'Bruce Banner'), ('ironman', 200000, 'Tony Stark');
+INSERT INTO Employee (username, salary, name, pass)
+VALUES ('hulk', 20000, 'Bruce Banner', MD5('smash')), ('ironman', 200000, 'Tony Stark',MD5('hunter2'));
 
 INSERT INTO Address (num, street, state, city, zip, apt_no)
 VALUES (1234,'SW GreenMachine Dr.','NY','New York',97111,NULL), (555,'SW malibu Pl', 'CA', 'Los Angeles',97000,3), (000,'space GXY', 'MW', 'Milky Way',00000, NULL);
