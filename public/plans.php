@@ -53,49 +53,9 @@
 	?>
 
 
-<table>
-</style="width:70%">
-<tr>
-	<th>Plan Name</th>
-	<th>Speed</th> 
-	<th>Price /Mo</th>
-</tr>
-<tr>
-	<td>Coral Reef</td>
-	<td>1mbps</td>
-	<td>3/mo</td>
-</tr>
-<tr>
-	<td>Snail</td>
-	<td>2Mbps</td> 
-	<td>$9/mo</td>
-</tr>
-<tr>
-	<td>Tortoise</td>
-	<td>6Mbps</td> 
-	<td>$21/mo</td>
-</tr>
-<tr>
-	<td>Rabbit</td>
-	<td>75Mbps</td> 
-	<td>$60/mo</td>
-</tr>
-<tr>
-	<td>Cheetah</td>
-	<td>200Mbps</td> 
-	<td>$90/mo</td>
-</tr>
-<tr>
-	<td>Light</td>
-	<td>100ZBps</td> 
-	<td>$900/mo</td>
-</tr>
 
 
-</table>
-
-
-</div>
+</main>
 
 
 
