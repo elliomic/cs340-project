@@ -7,8 +7,8 @@
 		die('Could not connect: ' . mysqli_error());
 	}
 
-	$user = mysqli_real_escape_string($_POST["username"]);
-	$password = mysqli_real_escape_string(md5($_POST["password"]));
+	$user = mysqli_real_escape_string($conn, $_POST['user']);
+	$password = mysqli_real_escape_string($conn, md5($_POST["password"]));
 
 	$result = mysqli_query($conn, "SELECT * FROM Customer WHERE username = '" . $user . "' AND pass = '" . $password . "'");
 	if (!$result) {
@@ -20,9 +20,11 @@
 		session_start();
 		$_SESSION['type'] = 'cutsomer';
 		$_SESSION['user'] = $user;
+		header('Location: ./plans.php');
+	} else {
+		header('Location: ./login.php?failed');
 	}
 	
-	header('Location: /');
 
 	mysqli_free_result($result);
 	mysqli_close($conn);
