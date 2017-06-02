@@ -14,7 +14,12 @@
 	$num_row = mysqli_num_rows($result);	
 	
 	echo "<table>";
-	echo "<tr><th>Plan Name</th><th>Speed</th><th>Price / Mo</th></tr>";
+	echo "<tr><th>Plan Name</th><th>Speed</th><th>Price / Mo</th>";
+
+	if(isset($_SESSION['type']) && isset($_SESSION['user']) && $_SESSION['type'] == 'customer') {
+	}
+
+	echo "</tr>";
 	// echo "<form action=\"showTable.php\" method=\"POST\">";
 	// echo "<select name=\"table\" size=\"1\" Font size=\"+2\">";
 	// Select a database table to display

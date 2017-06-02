@@ -18,7 +18,7 @@
 
 	if($num_row > 0) {
 		session_start();
-		$_SESSION['type'] = 'cutsomer';
+		$_SESSION['type'] = 'customer';
 		$_SESSION['user'] = $user;
 		header('Location: ./plans.php');
 	} else {
