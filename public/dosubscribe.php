@@ -11,9 +11,8 @@
 	$plan = mysqli_real_escape_string($conn, $_POST['plan']);
 	$billing = mysqli_real_escape_string($conn, $_POST['billing']);
 	
-
 	$result = mysqli_query($conn, "INSERT INTO Subscription (plan_id, address_id, billing_id, customer_id)" .
-	" VALUES (" . $plan . ", " . $
+	" VALUES (" . $plan . ", 1, 
 	if (!$result) {
 		die("Query to show fields from table failed");
 	}
