@@ -19,11 +19,13 @@
 	if (!$result) {
 		die("Query to show fields from table failed");
 	}
-	$num_row = mysqli_num_rows($result);
+	// $num_row = mysqli_num_rows($result);
 
-	header('Location: ./account.php');
-	
 	mysqli_free_result($result);
 	mysqli_close($conn);
+
+	header('Location: ./account.php');
+	exit();
+	
 	?>
 
