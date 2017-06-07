@@ -6,6 +6,28 @@ DROP TABLE IF EXISTS Customer;
 DROP TABLE IF EXISTS Address;
 DROP TABLE IF EXISTS Employee;
 
+DROP PROCEDURE IF EXISTS UpdateAddressCustomer;
+DELIMITER $$
+CREATE PROCEDURE UpdateAddressPlan(customerId INT, addNum INT, addStreet
+	VARCHAR(255), addAptNo INT, addCity VARCHAR(255), addSt CHAR(2), addZip DECIMAL(5))
+	BEGIN
+		DECLARE addressId INT;
+		IF NOT EXISTS(SELECT * FROM Address WHERE num = addNum AND street = addStreet AND (addAptNo IS NULL OR apt_no = addAptNo) AND city = addCity AND state = addSt AND zip = addZip) THEN
+		BEGIN
+			INSERT INTO Address (num, street, apt_no, city, state, zip)
+			VALUES (addNum, addStreet, addAptNo, addCity, addSt, addZip);
+		END;
+	END IF;
+	
+	SET addressId = (SELECT id FROM Address WHERE num = addNum AND
+	street = addStreet AND (addAptNo IS NULL OR apt_no = addAptNo) AND
+	city = addCity AND state = addSt AND zip = addZip);
+	
+	UPDATE Customers SET address_id = addressId WHERE id = customerId;
+	-- INSERT INTO Address_Plans (plan_id, address_id) VALUES (planId, addressId);
+END
+$$
+
 
 CREATE TABLE Employee (
 	id				INT AUTO_INCREMENT NOT NULL,

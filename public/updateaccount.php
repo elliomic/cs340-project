@@ -1,45 +1,44 @@
+<?php header('Location: ./account.php'); ?>
 <?php session_start() ?>
 
 <?php
-// change the value of $dbuser and $dbpass to your username and password
 	include 'connectvarsEECS.php'; 
+	error_reporting(E_ALL); ini_set('display_errors', 1);
 	
+
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	if (!$conn) {
 		die('Could not connect: ' . mysqli_error());
 	}
 
-	$user = mysqli_real_escape_string($conn, $_POST['user']);
+	$user = mysqli_real_escape_string($conn, $_SESSION['user']);
 	$id = mysqli_real_escape_string($conn, $_SESSION['id']);
 	
-	$num = mysqli_real_escape_string($conn, $_SESSION['num']);
-	$street = mysqli_real_escape_string($conn, $_SESSION['street']);
-	$apt = mysqli_real_escape_string($conn, $_SESSION['apt']);
-	$city = mysqli_real_escape_string($conn, $_SESSION['city']);
-	$state = mysqli_real_escape_string($conn, $_SESSION['state']);
-	$zip = mysqli_real_escape_string($conn, $_SESSION['zip']);
+	$num = mysqli_real_escape_string($conn, $_POST['num']);
+	$street = mysqli_real_escape_string($conn, $_POST['street']);
+	$apt = 'NULL';
+	if($_POST['apt'] != '') {
+		$apt = mysqli_real_escape_string($conn, $_POST['apt']);
+	}
+	$city = mysqli_real_escape_string($conn, $_POST['city']);
+	$state = mysqli_real_escape_string($conn, $_POST['state']);
+	$zip = mysqli_real_escape_string($conn, $_POST['zip']);
 	
 	$name = mysqli_real_escape_string($conn, $_POST['name']);
 	
-	$result = mysqli_query($conn, "UPDATE Customer SET name = '" . $name . "' WHERE id = " . $_SESSION['id']);
+	if($_POST['name'] != '') {
+		$result = mysqli_query($conn, "UPDATE Customer SET name = '" . $name . "' WHERE id = " . $_SESSION['id']);
+	}
 
 	if (!$result) {
 		die("Query to update name failed.");
 	}
-	// $num_row = mysqli_num_rows($result);
 	
-	// Get the address id of the customer
-	$result = mysqli_query($conn, "SELECT address_id FROM Customer WHERE id = " . $_SESSION['id']);
-	$userInfo = mysqli_fetch_row($result);
-	$addressId = $userInfo[0];
-	
-	$result = mysqli_query($conn, "UPDATE A"
+	$query = "CALL UpdateAddressCustomer (" . $id . ", " . $num . ", '" . $street . "', " . $apt . ", '" . $city . "', '" . $state . "', " . $zip . ")";
+	$result = mysqli_query($conn, $query);
 
-	mysqli_free_result($result);
 	mysqli_close($conn);
 
-	header('Location: ./account.php');
-	exit();
-	
+
 	?>
 
