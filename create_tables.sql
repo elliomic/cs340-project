@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS Employee;
 
 DROP PROCEDURE IF EXISTS UpdateAddressCustomer;
 DELIMITER $$
-CREATE PROCEDURE UpdateAddressPlan(customerId INT, addNum INT, addStreet
+CREATE PROCEDURE UpdateAddressCustomer(customerId INT, addNum INT, addStreet
 	VARCHAR(255), addAptNo INT, addCity VARCHAR(255), addSt CHAR(2), addZip DECIMAL(5))
 	BEGIN
 		DECLARE addressId INT;
@@ -23,11 +23,9 @@ CREATE PROCEDURE UpdateAddressPlan(customerId INT, addNum INT, addStreet
 	street = addStreet AND (addAptNo IS NULL OR apt_no = addAptNo) AND
 	city = addCity AND state = addSt AND zip = addZip);
 	
-	UPDATE Customers SET address_id = addressId WHERE id = customerId;
-	-- INSERT INTO Address_Plans (plan_id, address_id) VALUES (planId, addressId);
+	UPDATE Customer SET address_id = addressId WHERE id = customerId;
 END
 $$
-
 
 CREATE TABLE Employee (
 	id				INT AUTO_INCREMENT NOT NULL,
