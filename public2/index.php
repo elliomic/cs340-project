@@ -1,4 +1,4 @@
-<?php include("_header.php"); ?>
+<?php include("includes/_header.php"); ?>
 
 <h2 class="x-display2">PEBCAK Services</h2>
 <p class="x-heading2">Enter your address to see available plans.</p>
@@ -54,4 +54,4 @@
   </form>
 </section>
 		  
-<?php include("_footer.php"); ?>
+<?php include("includes/_footer.php"); ?>
