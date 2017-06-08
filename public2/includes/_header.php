@@ -1,3 +1,5 @@
+<?php require_once "includes/setup.php" ?>
+
 <html lang="en">
   <head>
 	<meta charset="utf-8">
