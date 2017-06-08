@@ -17,14 +17,25 @@
 	$card = mysqli_real_escape_string($conn, $_POST['card']);
 	$number = mysqli_real_escape_string($conn, $_POST['number']);
 	$exp = mysqli_real_escape_string($conn, $_POST['exp']);
+	$cardId = mysqli_real_escape_string($conn, $_POST['id']);
+	$action = mysqli_real_escape_string($conn, $_POST['action']);
 	
-	$query = "INSERT INTO Billing_Info (name, cc_type, cc_number, expiration_date, user_id) VALUES ('" . $name . "', '" . $card . "', " . $number . ", '" . $exp . "', " . $id . " )";
-	
-	$result = mysqli_query($conn, $query);
+	if($action == 'Update') {
+		$query = "UPDATE Billing_Info SET name = '" . $name . "', cc_type = '" . $card . "', cc_number = " . $number . ", expiration_date = '" . $exp . "' WHERE id = " . $cardId;
+		$result = mysqli_query($conn, $query);
+		
+		if (!$result) {
+			die("Query to update card failed");
+		}
 
-	if (!$result) {
-		die("Query to update name failed.");
+	} else if($action == 'Delete') {
+		$query = "DELETE FROM Billing_Info WHERE id = " . $cardId;
+		$result = mysqli_query($conn, $query);
+		if (!$result) {
+			die("Query to delete card failed");
+		}
 	}
+	
 	
 	mysqli_close($conn);
 

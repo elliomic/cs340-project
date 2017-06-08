@@ -46,12 +46,13 @@
 		for($i = 0; $i < $num_row; $i++) {
 			$cardInfo = mysqli_fetch_row($result);
 			echo '<form action="updatebilling.php" method="post">';
-			echo 'Name: <input type="text" name="name" autocomplete=off required value=' . $cardInfo[1] . '><br>';
+			echo '<input type="hidden" name="id" value="' . $cardInfo[0] . '">';
+			echo 'Name: <input type="text" name="name" autocomplete=off required value="' . $cardInfo[1] . '"><br>';
 			echo 'Card: <input type="text" name="card" autocomplete=off required value=' . $cardInfo[2] . '><br>';
 			echo 'Number: <input type="text" name="number" autocomplete=off required value=' . $cardInfo[3] . '><br>';
-			echo 'Expiration: <input type="text" name="exp" autocomplete=off required value=' . $cardInfo[4] . '><br>';
-			echo '<input type="submit" name="update" value="Update">';
-			echo '<input type="submit" name="delete" value="Delete">';
+			echo 'Expiration: <input type="date" name="exp" autocomplete=off required value=' . $cardInfo[4] . '><br>';
+			echo '<input type="submit" name="action" value="Update">';
+			echo '<input type="submit" name="action" value="Delete">';
 			echo '</form>';
 		}
 		
