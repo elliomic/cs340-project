@@ -1,155 +1,45 @@
-#haydenpic {
-	width:25%;
-	height:auto;
-	
+
+
+ul {
+position: fixed;
+top: 0;
+width: 100%;
+       list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+	  background-color: #333;
 }
 
-h3, form{
-	padding-left: 20px;
-	
+li {
+	border-right: 1px solid #bbb;
+	float: left;
+
 }
-li{
-	padding-top: 20px;
-	padding-bottom: 5px;
-	
+li a {
+display: block;
+	color: white;
+       text-align: center;
+padding: 14px 16px;
+	 text-decoration: none;
 }
 
-footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #efefef;
-  text-align: center;
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	background-color: #111;
+}
+.active{
+	background-color: #4CAF50;
 }
 
-body,
-html {
-margin:0;
-padding:0;
-color:#000;
-background-image: url("images/Blue_Background.jpg") ;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+
+
+body{
+background-color: lightgray;
 }
-#wrap {
-width:1440px;
-margin:0 auto;
-}
-.login {
-	text-align: right;
-}
-#header {
-padding:5px 10px;
-}
-h1 {
-margin:0;
-font-size:60px;
-}
-#nav {
-padding:5px 10px;
-}
-#nav ul {
-margin:0;
-padding:0;
-list-style:none;
+footer{
 text-align: center;
-}
-#nav li {
-display:inline;
-margin:0;
-padding:0;
-}
-#sidebar {
-float:left;
-width:150px;
-padding:10px;
-background-color:#00FF00;
-}
-#main {
-float:right;
-width:1200px;
-padding:10px;
-}
-#myPicture{
-width:1000px;
-height:auto;	
-	
-}
-h2 {
-margin:0 0 1em;
-}
-
-footer {
-clear:both;
-padding:5px 10px;
-text-align:center;
-font-style: italic;
-}
-
-ul#menu {
-    padding: 0;
-	padding-bottom: 15px;
-	padding-top: 10px;
-	
-}
-
-ul#menu li {
-    display: inline; 
-
-}
-table{
-	 border: 1px solid black;
-	border-collapse: collapse;
-}	
-th{
-border: 1px solid black;
-padding:10px;
-border-collapse: collapse;
-}
-
-td {
-padding: 15px;
-	 border: 1px solid black;
-padding:10px;
-	 border-collapse: collapse;
-}
-ul#menu li a {
-    background-color: black;
-    color: blue;
-    padding: 20px 16px;
-    text-decoration: none;
-    border-radius: 4px 4px 4px 4px;
-}
-
-ul#menu li a:hover {
-    background-color: white;
-	color: blue;
-}
-
-ul li
-{
-    display:inline;
-    padding-left:0%;
-    padding-right:0%;
-    text-align:left;
-    font-size:16px;
-    font-weight:bold;
-	padding-bottom: 5px;
-}
-
-.loginfailed
-{
-	color: red;
-}
-
-.planYes
-{
-	color: green;
-}
-
-.planNo
-{
-	color: red;
+	position: fixed;	
+bottom:0;
+width: 100%;
 }
