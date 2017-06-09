@@ -19,22 +19,19 @@
 		}
 		
 		$userInfo = mysqli_fetch_row($result);
-		
-		//for($i = 0; $i < 9; $i++) {
-		//	echo $userInfo[$i] . '<br>';
-		//}
-		
-		echo 'Account info for ' . $userInfo[0] . '<br><br>';
+
+		// Print the name and address
+		echo '<h1>Account info for ' . $userInfo[0] . '</h1>';
 		echo '<form action="updateaccount.php"  method="post">';
-		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[1] . '><br><br>';
-		echo 'Number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[2] . '><br>';
+		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[1] . '><br>';
+		echo 'Address number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[2] . '><br>';
 		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[3] . '><br>';
 		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . $userInfo[4] . '><br>';
 		echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[5] . '><br>';
 		echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[6] . '><br>';
 		echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[7] . '><br>';
 
-		echo '<input type="submit" name="action" value="Update">';
+		echo '<div class="x-flex__content"><input type="submit" name="action" value="Update" class="x-button--solid"></div>';
 		echo '</form>';
 			
 		mysqli_free_result($result);
@@ -43,6 +40,10 @@
 		
 		$num_row = mysqli_num_rows($result);
 		
+		echo "<hr>";
+		echo "<h1>My cards</h1>";
+		
+		// Print the user's cards
 		for($i = 0; $i < $num_row; $i++) {
 			$cardInfo = mysqli_fetch_row($result);
 			echo '<form action="updatebilling.php" method="post">';
@@ -51,21 +52,42 @@
 			echo 'Card: <input type="text" name="card" autocomplete=off required value=' . $cardInfo[2] . '><br>';
 			echo 'Number: <input type="text" name="number" autocomplete=off required value=' . $cardInfo[3] . '><br>';
 			echo 'Expiration: <input type="date" name="exp" autocomplete=off required value=' . $cardInfo[4] . '><br>';
-			echo '<input type="submit" name="action" value="Update">';
-			echo '<input type="submit" name="action" value="Delete">';
+			echo '<div class="x-flex__content"><input type="submit" name="action" value="Update" class="x-button--solid"></div>';
+			echo '<div class="x-flex__content"><input type="submit" name="action" value="Delete" class="x-button--solid"></div>';
 			echo '</form>';
 		}
 		
-		echo "<hr>";	
+		echo "<hr>";
+		echo "<h1>Add a new card</h1>";
 		
+		// Add a new card
 		echo '<form action="addbilling.php" method="post">';
 		echo 'Name: <input type="text" name="name" autocomplete=off required><br>';
 		echo 'Card: <input type="text" name="card" autocomplete=off required><br>';
 		echo 'Number: <input type="text" name="number" autocomplete=off required><br>';
 		echo 'Expiration: <input type="date" name="exp" autocomplete=off required><br>';
-		echo '<input type="submit" name="add" value="Add">';
+		echo '<div class="x-flex__content"><input type="submit" name="add" value="Add" class="x-button--solid"></div>';
 		echo '</form>';
 		
+		mysqli_free_result($result);
+		
+		echo '<hr><h1>My plans</h1>';
+		
+		$query = 'SELECT s.plan_id, s.address_id, s.billing_id, p.name, p.price, p.speed FROM Subscription s LEFT JOIN Plan p ON s.plan_id = p.id WHERE customer_id = ' . $_SESSION['id'];
+		$result = mysqli_query($conn, $query);
+		$num_row = mysqli_num_rows($result);
+		
+		if (!$result) {
+			mysqli_free_result($result);
+			mysqli_close($conn);
+			echo 'Error getting subscriptions';
+		}
+		
+		for($i = 0; $i < $num_row; $i++) {
+			$planInfo = mysqli_fetch_row($result);
+			echo $planInfo[3];
+			echo '<br>';
+		}
 		
 		mysqli_close($conn);
 	}
