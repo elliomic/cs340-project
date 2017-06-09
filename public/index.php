@@ -1,4 +1,4 @@
-<?php include "includes/_header.php"; ?>
+<?php include "_header.php"; ?>
 
 <h2 class="x-display2">PEBCAK Services</h2>
 <p class="x-heading2">Enter your address to see available plans.</p>
@@ -37,7 +37,7 @@
 		</div>
 		<section aria-hidden="true" class="x-flex__col-xs-12 x-flex-row flush top-xs end-xs x-error-summary" data-error-summary="">
 		  <div class="x-flex__col-xs-1">
-			<svg focusable="false" aria-hidden="true" class="x-icon x-icon--error-small"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="includes/images/global-sprite.svg#icon-exclamation"></use></svg>
+			<svg focusable="false" aria-hidden="true" class="x-icon x-icon--error-small"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/global-sprite.svg#icon-exclamation"></use></svg>
 		  </div>
 		  <div class="x-flex__col-xs-11">
 			<ol id="error-summary" data-error-summary-container="" class="x-error-summary__errors"></ol>
@@ -54,4 +54,4 @@
   </form>
 </section>
 		  
-<?php include "includes/_footer.php"; ?>
+<?php include "_footer.php"; ?>

@@ -27,7 +27,7 @@
 	$result = mysqli_query($conn, $result);
 	$num_row = mysqli_num_rows($result);
 	if($num_rows == 0) {
-		
+		echo 'No cards';
 	} else {
 		
 	}
