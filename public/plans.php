@@ -23,7 +23,7 @@
 	// $result = mysqli_query($conn, "SELECT p.name, p.price, p.speed, c.id FROM Plan p LEFT JOIN Address_Plans ap ON p.id = ap.plan_id LEFT JOIN Customer c ON ap.address_id = c.address_id AND c.username = '" . $user . "'");
 
 
-	$result = mysqli_query($conn, "SELECT p.name, p.price, p.speed, c.id FROM Plan p LEFT JOIN Customer c ON c.address_id IN (SELECT address_id FROM Address_Plans WHERE address_id = c.address_id AND plan_id = p.id AND c.id = 1)");
+	$result = mysqli_query($conn, "SELECT p.name, p.price, p.speed, c.id, p.id FROM Plan p LEFT JOIN Customer c ON c.address_id IN (SELECT address_id FROM Address_Plans WHERE address_id = c.address_id AND plan_id = p.id AND c.id = 1)");
 
 
 	$num_row = mysqli_num_rows($result);
@@ -43,7 +43,7 @@
 	// Select a database table to display
 	for($i=0; $i<$num_row; $i++) {
 		$plan=mysqli_fetch_row($result);
-		echo "<tr><td>" . $plan[0] . "</td><td>" . $plan[2] . "</td><td>" . $plan[1] . "</td>";
+		echo '<tr><td><a href="subscribe.php?plan=' . $plan[4] . '">' . $plan[0] . "</a></td><td>" . $plan[2] . "</td><td>" . $plan[1] . "</td>";
 		
 		if($loggedIn) {
 			echo "<td>";
