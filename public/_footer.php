@@ -1,2 +1,8 @@
-</main>
-<footer>Footer</footer></main></body></html>
+			</div>
+		  </div>
+		</div>
+	  </section>
+	  <footer>&copy; 2017 Pebcak</footer>
+	</main>
+  </body>
+</html>
