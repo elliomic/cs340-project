@@ -1,4 +1,4 @@
-<?php require_once "includes/setup.php" ?>
+<?php require_once "setup.php" ?>
 <!DOCTYPE HTML>
 <html lang="en">
   <head>

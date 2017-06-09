@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('html_errors', 1);
 
-$root = dirname(dirname(__FILE__));
+$root = dirname(__FILE__);
 
 session_save_path($root . "/sessions");
 
