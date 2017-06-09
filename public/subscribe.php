@@ -30,12 +30,11 @@ include 'connectvarsEECS.php';
 			$planPrice = $planInfo[1];
 			$planSpeed = $planInfo[2];
 			
-			echo 'Subscribe to ' . $planName . '<br>';
+			echo '<h1>Subscribe to ' . $planName . '</h1>';
 		}
 		
-		echo 'Account info for ' . $userInfo[0] . '<br><br>';
 		echo '<form action="dosubscribe.php"  method="post">';
-		echo 'Address to subscribe at:<br>';
+		echo '<br>Address to subscribe at:<br><br>';
 		echo 'Number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[2] . '><br>';
 		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[3] . '><br>';
 		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . $userInfo[4] . '><br>';
