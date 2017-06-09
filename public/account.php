@@ -68,8 +68,6 @@
 		
 		
 		mysqli_close($conn);
-	} else {
-		header('Location: ./login.php?failed');
 	}
 	?>
 
