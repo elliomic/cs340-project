@@ -1,4 +1,4 @@
-<?php header('Location: ./account.php'); ?>
+<?php //header('Location: ./account.php'); ?>
 <?php
 	include 'connectvarsEECS.php'; 
 	session_start();
@@ -34,6 +34,7 @@
 	}
 	
 	$query = "CALL UpdateAddressCustomer (" . $id . ", " . $num . ", '" . $street . "', " . $apt . ", '" . $city . "', '" . $state . "', " . $zip . ")";
+	echo $query;
 	$result = mysqli_query($conn, $query);
 
 	mysqli_close($conn);
