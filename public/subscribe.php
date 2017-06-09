@@ -36,9 +36,9 @@ include 'connectvarsEECS.php';
 		echo '<form action="dosubscribe.php"  method="post">';
 		echo '<br>Address to subscribe at:<br><br>';
 		echo 'Number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[2] . '><br>';
-		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[3] . '><br>';
+		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[3] . '"><br>';
 		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . $userInfo[4] . '><br>';
-		echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[5] . '><br>';
+		echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[5] . '"><br>';
 		echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[6] . '><br>';
 		echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[7] . '><br>';
 		
