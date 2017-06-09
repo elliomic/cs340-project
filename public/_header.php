@@ -1,4 +1,4 @@
-<?php require_once "setup.php" ?>
+<?php include "setup.php" ?>
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
@@ -11,7 +11,7 @@
           href="images/favicon.png">
   </head>
   <body>
-    
+ 
     <header class="x-header-nav x-header-nav--ad">
 	  <link href="css/gnavstyle.css" rel="stylesheet">
 	  <div aria-label="Main Navigation" class="polaris-nav polaris-nav-header-wrapper" role="navigation">		
@@ -34,7 +34,8 @@
 				<span class="polaris-trackname">Shop</span>
 			  </a>
 			</li>
-            <?php if(is_logged_in()) {?>
+
+	<?php if(isset($_SESSION['type'])) {?>
 			<li class="polaris-item ">
 			  <a href="account.php " target="_self" class="polaris-link ">
 				<span class="polaris-trackname">Account</span>

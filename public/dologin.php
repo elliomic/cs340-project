@@ -22,7 +22,7 @@
 		$_SESSION['user'] = $user;
 		$row = mysqli_fetch_row($result);
 		$_SESSION['id'] = $row[0];
-		header('Location: ./plans.php');
+		header('Location: ./account.php');
 	} else {
 		header('Location: ./login.php?failed');
 	}
