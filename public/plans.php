@@ -43,7 +43,15 @@
 	// Select a database table to display
 	for($i=0; $i<$num_row; $i++) {
 		$plan=mysqli_fetch_row($result);
-		echo '<tr><td><a href="subscribe.php?plan=' . $plan[4] . '">' . $plan[0] . "</a></td><td>" . $plan[2] . "</td><td>" . $plan[1] . "</td>";
+		echo '<tr><td>';
+		if($loggedIn) {
+			echo '<a href="subscribe.php?plan=' . $plan[4] . '">';
+		}
+		echo $plan[0];
+		if($loggedIn) {
+			echo '</a>';
+		}
+		echo '</td><td>' . $plan[2] . "</td><td>" . $plan[1] . "</td>";
 		
 		if($loggedIn) {
 			echo "<td>";
@@ -57,7 +65,7 @@
 			echo "</td>";
 		}
 		
-		echo "<tr>";
+		echo "</tr>";
 		// echo "<option value='$tablename[0]' >".$tablename[0]."</option>";
 	}
 	
