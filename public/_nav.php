@@ -1,13 +1,13 @@
 	<header class="x-header-nav x-header-nav--ad">
 	  
-	  <link href="includes/css/gnavstyle.css" rel="stylesheet">
+	  <link href="css/gnavstyle.css" rel="stylesheet">
 	  
 	  <div aria-label="Main Navigation" class="polaris-nav polaris-nav-header-wrapper" role="navigation">		
 		<div class="polaris-header"> 
 		  <ul class="polaris-navigation">
 			<li class="polaris-item">
 			  <a href="index.php" target="_self" class="polaris-link ">
-				<img src="includes/images/logo.jpg" height=50>
+				<img src="images/logo.jpg" height=50>
 			  </a>
 			</li>
 		  </ul>
