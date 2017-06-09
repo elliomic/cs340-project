@@ -34,15 +34,40 @@
 		echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[6] . '><br>';
 		echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[7] . '><br>';
 
-		echo '<input type="submit" name="Update">';
+		echo '<input type="submit" name="action" value="Update">';
+		echo '</form>';
+			
+		mysqli_free_result($result);
+		
+		$result = mysqli_query($conn, "SELECT id, name, cc_type, cc_number, expiration_date FROM Billing_Info WHERE user_id = " . $_SESSION['id']);
+		
+		$num_row = mysqli_num_rows($result);
+		
+		for($i = 0; $i < $num_row; $i++) {
+			$cardInfo = mysqli_fetch_row($result);
+			echo '<form action="updatebilling.php" method="post">';
+			echo '<input type="hidden" name="id" value="' . $cardInfo[0] . '">';
+			echo 'Name: <input type="text" name="name" autocomplete=off required value="' . $cardInfo[1] . '"><br>';
+			echo 'Card: <input type="text" name="card" autocomplete=off required value=' . $cardInfo[2] . '><br>';
+			echo 'Number: <input type="text" name="number" autocomplete=off required value=' . $cardInfo[3] . '><br>';
+			echo 'Expiration: <input type="date" name="exp" autocomplete=off required value=' . $cardInfo[4] . '><br>';
+			echo '<input type="submit" name="action" value="Update">';
+			echo '<input type="submit" name="action" value="Delete">';
+			echo '</form>';
+		}
+		
+		echo "<hr>";	
+		
+		echo '<form action="addbilling.php" method="post">';
+		echo 'Name: <input type="text" name="name" autocomplete=off required><br>';
+		echo 'Card: <input type="text" name="card" autocomplete=off required><br>';
+		echo 'Number: <input type="text" name="number" autocomplete=off required><br>';
+		echo 'Expiration: <input type="date" name="exp" autocomplete=off required><br>';
+		echo '<input type="submit" name="add" value="Add">';
 		echo '</form>';
 		
 		
-		
-		mysqli_free_result($result);
 		mysqli_close($conn);
-	} else {
-		header('Location: ./login.php?failed');
 	}
 	?>
 
