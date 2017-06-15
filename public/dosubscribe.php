@@ -40,7 +40,6 @@
 		$query = "INSERT INTO Subscription (plan_id, address_id, billing_id, customer_id)" .
 		" VALUES (" . $plan . ", " . $addressId . ", " . $card . ", " . $_SESSION['id'] . ")";
 		mysqli_query($conn, $query);
-		echo "ZERO ROWS";
 		header("Location: account.php");
 	} else {
 		header("Location: subscribefailed.php");

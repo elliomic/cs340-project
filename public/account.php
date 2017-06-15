@@ -83,6 +83,10 @@
 			echo 'Error getting subscriptions';
 		}
 
+		if($num_row == 0) {
+			echo "You have no plans";
+		}
+
 		
 		for($i = 0; $i < $num_row; $i++) {
 			$planInfo = mysqli_fetch_row($result);
@@ -107,7 +111,7 @@
 			echo $addressInfo[3] . ', ' . $addressInfo[4] . ', ' . $addressInfo[5];
 			echo '<br><br>';
 			echo 'Billing: ' . $billingInfo[0] . ' ending with ' . substr((string)$billingInfo[1], -4);
-			echo '<form action="unsub.php" method="post">';
+			echo '<form action="dounsub.php" method="post">';
 			echo '<input type="hidden" name="plan" value="' . $planInfo[0] . '">';
 			echo '<input type="hidden" name="address" value="' . $planInfo[1] . '">';
 			echo '<div class="x-flex__content"><input type="submit" name="action" value="Unsubscribe" class="x-button--solid"></div>';
