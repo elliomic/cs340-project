@@ -23,8 +23,14 @@
 	// $result = mysqli_query($conn, "SELECT p.name, p.price, p.speed, c.id FROM Plan p LEFT JOIN Address_Plans ap ON p.id = ap.plan_id LEFT JOIN Customer c ON ap.address_id = c.address_id AND c.username = '" . $user . "'");
 
 
-	$result = mysqli_query($conn, "SELECT p.name, p.price, p.speed, c.id, p.id FROM Plan p LEFT JOIN Customer c ON c.address_id IN (SELECT address_id FROM Address_Plans WHERE address_id = c.address_id AND plan_id = p.id AND c.id = " . $_SESSION['id'] . ")");
+	$query = "";
+	if(isset($_SESSION['id'])) {
+		$query = "SELECT p.name, p.price, p.speed, c.id, p.id FROM Plan p LEFT JOIN Customer c ON c.address_id IN (SELECT address_id FROM Address_Plans WHERE plan_id = p.id) AND c.id = " . $_SESSION['id'];
+	} else {	
+		$query = "SELECT p.name, p.price, p.speed, NULL, p.id FROM Plan p";
+	}
 
+	$result = mysqli_query($conn, $query);
 
 	$num_row = mysqli_num_rows($result);
 	
