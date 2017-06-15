@@ -71,7 +71,7 @@
 		
 		mysqli_free_result($result);
 		
-		echo '<hr><h1>My plans</h1>';
+		echo '<hr><h1>My plans</h1><br>';
 		
 		$query = 'SELECT s.plan_id, s.address_id, s.billing_id, p.name, p.price, p.speed FROM Subscription s LEFT JOIN Plan p ON s.plan_id = p.id WHERE customer_id = ' . $_SESSION['id'];
 		$result = mysqli_query($conn, $query);
@@ -82,11 +82,36 @@
 			mysqli_close($conn);
 			echo 'Error getting subscriptions';
 		}
+
 		
 		for($i = 0; $i < $num_row; $i++) {
 			$planInfo = mysqli_fetch_row($result);
-			echo $planInfo[3];
+			// Get address info for this plan
+			$query = "SELECT a.num, a.street, a.apt_no, a.city, a.state, a.zip FROM Address a WHERE a.id = " . $planInfo[1];
+			$addressResult = mysqli_query($conn, $query);
+			$addressInfo = mysqli_fetch_row($addressResult);
+
+			// Get billing info for this plan
+			$query = "SELECT cc_type, cc_number FROM Billing_Info WHERE id = " . $planInfo[2];
+			$billingResult = mysqli_query($conn, $query);
+			$billingInfo = mysqli_fetch_row($billingResult);
+
+			echo '<h2>' . $planInfo[3] . '</h2>';
+			echo 'Speed: ' . $planInfo[5] . '<br>';
+			echo 'Price: ' . $planInfo[4] . '<br><br>';
+			echo $addressInfo[0] . ' ' . $addressInfo[1];
+			if($addressInfo[2] != '') {
+				echo '#' . $addressInfo[2];
+			}
 			echo '<br>';
+			echo $addressInfo[3] . ', ' . $addressInfo[4] . ', ' . $addressInfo[5];
+			echo '<br><br>';
+			echo 'Billing: ' . $billingInfo[0] . ' ending with ' . substr((string)$billingInfo[1], -4);
+			echo '<form action="unsub.php" method="post">';
+			echo '<input type="hidden" name="plan" value="' . $planInfo[0] . '">';
+			echo '<input type="hidden" name="address" value="' . $planInfo[1] . '">';
+			echo '<div class="x-flex__content"><input type="submit" name="action" value="Unsubscribe" class="x-button--solid"></div>';
+			echo '</form>';
 		}
 		
 		mysqli_close($conn);
