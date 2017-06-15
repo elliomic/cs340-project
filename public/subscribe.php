@@ -34,6 +34,7 @@ include 'connectvarsEECS.php';
 		}
 		
 		echo '<form action="dosubscribe.php"  method="post">';
+		echo '<input type="hidden" name="plan" value="' . $planId . '">';
 		echo '<br>Address to subscribe at:<br><br>';
 		echo 'Number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[2] . '><br>';
 		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[3] . '"><br>';
