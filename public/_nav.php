@@ -18,8 +18,8 @@
 			  </a>
 			</li>
 			<li class="polaris-item ">
-			  <a href="offers.php" target="_self" class="polaris-link">
-				<span class="polaris-trackname">Shop</span>
+			  <a href="plans.php" target="_self" class="polaris-link">
+				<span class="polaris-trackname">Browse Plans</span>
 			  </a>
 			</li>
 			<li class="polaris-item ">
@@ -30,7 +30,7 @@
 		  </ul>
 		  <ul class="polaris-personal">
 			<li class="polaris-item ">
-			  <a href="signin.php" target="_self" class="polaris-link ">
+			  <a href="login.php" target="_self" class="polaris-link ">
 				<span class="polaris-trackname">Sign In</span>
 			  </a>
 			</li>
