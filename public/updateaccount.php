@@ -24,9 +24,10 @@
 	$zip = mysqli_real_escape_string($conn, $_POST['zip']);
 	
 	$name = mysqli_real_escape_string($conn, $_POST['name']);
-	
+
 	if($_POST['name'] != '') {
-		$result = mysqli_query($conn, "UPDATE Customer SET name = '" . $name . "' WHERE id = " . $_SESSION['id']);
+		$query = "UPDATE Customer SET name = '" . $name . "' WHERE id = " . $_SESSION['id'];
+		$result = mysqli_query($conn, $query);
 	}
 
 	if (!$result) {
