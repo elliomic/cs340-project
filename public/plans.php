@@ -39,7 +39,7 @@
 	}
 	
 	echo "<table>";
-	echo "<tr><th>Plan Name</th><th>Speed</th><th>Price / Mo</th>";
+	echo '<tr style="margin:auto"><th>Plan Name</th><th>Speed</th><th>Price / Mo</th>';
 
 	if($loggedIn) {
 		echo "<th>Available at your location</th>";
@@ -50,22 +50,17 @@
 	for($i=0; $i<$num_row; $i++) {
 		$plan=mysqli_fetch_row($result);
 		echo '<tr><td>';
-		if($loggedIn) {
-			echo '<a href="subscribe.php?plan=' . $plan[4] . '">';
-		}
 		echo $plan[0];
-		if($loggedIn) {
-			echo '</a>';
-		}
-		echo '</td><td>' . $plan[2] . "</td><td>" . $plan[1] . "</td>";
+
+		echo '</td><td>' . clean_input($plan[2]) . "</td><td>" . clean_input($plan[1]) . "</td>";
 		
 		if($loggedIn) {
 			echo "<td>";
 
 			if(isset($plan[3])) {
-				echo '<div class="planYes">Yes!</div>';
+				echo '<a href="subscribe.php?plan='. clean_input($plan[4]) . '">' . 'Yes! Subscribe now!' . '</a>';
 			} else {
-				echo '<div class="planNo">No</div>';
+				echo 'No';
 			}
 
 			echo "</td>";
