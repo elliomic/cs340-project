@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/all.css">
   </head>
   <body>
-    <form action="doplanedit.php" method="post">
+    <form action="doplanedit.php" method="post" name="action" value="edit_vals">
       <fieldset>
         <div class="x-flex-row center-xs middle-xs">
 	      <div class="x-flex__col-xs-6">
@@ -52,7 +52,32 @@
 	      </div>
 	      <input class="x-button--solid" type="submit" name="action" value="Edit plan">
 	      <input type="hidden" name="planID" value="<?php echo $planID ?>">
-      </fieldset>
+	
+		  <?php 
+	  mysqli_free_result($result);
+		$result = mysqli_query($conn, "SELECT id, num, street, city, state, zip FROM Address");
+		$num_addresses = mysqli_num_rows($result); ?>
+
+		<div class="x-flex__col-xs-12">
+		    <div class="x-flex__content">
+		      <div class="x-field--text">
+				Add Address To Plan:
+				<?php if($num_addresses > 0) { ?>
+					<select name="address">
+					
+					<?php for($i=0; $i<$num_addresses; $i++){
+						$this_address = mysqli_fetch_row($result); ?>
+						<option value="<?php echo $this_address[0] ?>"><?php echo $this_address[1] . ' ' . $this_address[2] . ' ' . $this_address[3] . ' ' . $this_address[4] . ' ' . $this_address[5] ?></option>
+					<?php } ?>
+				
+					</select>
+					<input class="x-button--solid" type="submit" name="action" value="add_address">
+				
+				<?php } ?>
+				</div>
+		    </div>
+	      </div>
+	  </fieldset>	  
     </form>
   </body>
 </html>
