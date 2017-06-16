@@ -3,11 +3,10 @@
 <h1> Log In </h1>
 
 <?php
-
+	// If this is after a failed login, then show an error message
 	if(isset($_GET['failed'])) {
-		echo '<div class="loginfailed">Login failed</div>';
+		echo '<div style="color:red">Login failed</div>';
 	}
-
 ?>
 
 <form action="dologin.php"  method="post">

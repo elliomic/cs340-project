@@ -26,11 +26,13 @@
 	$query = "CALL CheckValidState ('" . $state . "')";
 	$result = mysqli_query($conn, $query);
 	//
+	// sql state 4500 means CheckValidState failed (the user did not enter a valid 2 character state code)
 	if($conn->sqlstate == 45000) {
 		header('Location: ./badstate.php');
 	} else {
 		header('Location: ./account.php');
 		//
+		// Update the customer's name
 		if($_POST['name'] != '') {
 			$query = "UPDATE Customer SET name = '" . $name . "' WHERE id = " . $_SESSION['id'];
 			$result = mysqli_query($conn, $query);
@@ -40,6 +42,7 @@
 			die("Query to update name failed.");
 		}
 		//
+		// Update the customer's address
 		$query = "CALL UpdateAddressCustomer (" . $id . ", " . $num . ", '" . $street . "', " . $apt . ", '" . $city . "', '" . $state . "', " . $zip . ")";
 		$result = mysqli_query($conn, $query);
 		//

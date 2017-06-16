@@ -2,6 +2,7 @@
 <?php
 	error_reporting(E_ALL); ini_set('display_errors', 1);
 	include 'connectvarsEECS.php'; 
+	// Make sure the user is logged in
 	if(isset($_SESSION['type']) && isset($_SESSION['user']) && $_SESSION['type'] == 'customer') {
 		$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 		if (!$conn) {
@@ -14,7 +15,6 @@
 		$result = mysqli_query($conn, "SELECT c.username, c.name, a.num, a.street, a.apt_no, a.city, a.state, a.zip FROM Customer c LEFT JOIN Address a ON c.address_id = a.id WHERE c.id = " . $_SESSION['id']);
 		$num_row = mysqli_num_rows($result);
 		
-		//redirect to login page if query fails
 		if (!$result) {
 			mysqli_free_result($result);
 			mysqli_close($conn);
@@ -39,7 +39,6 @@
 			
 		mysqli_free_result($result);
 		
-		//query for credit card data
 		$result = mysqli_query($conn, "SELECT id, name, cc_type, cc_number, expiration_date FROM Billing_Info WHERE user_id = " . $_SESSION['id']);
 		
 		$num_row = mysqli_num_rows($result);
@@ -106,14 +105,20 @@
 			$billingResult = mysqli_query($conn, $query);
 			$billingInfo = mysqli_fetch_row($billingResult);
 
+			// Print out the speed/price for this plan
 			echo '<h2>' . clean_input($planInfo[3]) . '</h2>';
 			echo 'Speed: ' . clean_input($planInfo[5]) . '<br>';
 			echo 'Price: ' . clean_input($planInfo[4]) . '<br><br>';
+			
+			// Print out the address taht this plan is for
+			// Starting with number, street
 			echo clean_input($addressInfo[0]) . ' ' . clean_input($addressInfo[1]);
+			// Print the apartment number, if appropriate
 			if(clean_input($addressInfo[2]) != '') {
 				echo '#' . clean_input($addressInfo[2]);
 			}
 			echo '<br>';
+			// City, State, Zip
 			echo  clean_input($addressInfo[3]) . ', ' .  clean_input($addressInfo[4]) . ', ' .  clean_input($addressInfo[5]);
 			echo '<br><br>';
 			echo 'Billing: ' . clean_input($billingInfo[0]) . ' ending with ' . clean_input(substr((string)$billingInfo[1], -4));
@@ -127,12 +132,4 @@
 		mysqli_close($conn);
 	}
 	?>
-
-
-
-
-
-
-
-
 <?php include '_footer.php' ?>
