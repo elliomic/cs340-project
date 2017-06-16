@@ -1,5 +1,6 @@
 <?php include "_header.php"; ?>
 <?php
+	//displays a list of customers for employees
 
 	include 'connectvarsEECS.php';
 	
@@ -16,7 +17,9 @@
 		$loggedIn = True;
 	}
 
+	//checks if the user is logged in
 	if($loggedIn){
+		//pulls customer information and address
 		$result = mysqli_query($conn, "SELECT c.id, c.username, c.name, a.num, a.street, a.city, a.state FROM Customer c, Address a WHERE a.id = c.address_id");
 
 		$num_row = mysqli_num_rows($result);
@@ -25,6 +28,7 @@
 			die("Query to show fields from table failed");
 		}
 		
+		//create a table to display customer data
 		echo "<table>";
 		echo "<tr><th>User ID</th><th>Username</th><th>Customer Name</th><th>Address</th>";
 

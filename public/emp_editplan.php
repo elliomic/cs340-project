@@ -14,7 +14,7 @@
 		$loggedIn = True;
 	}
 
-	if(!$loggedIn){
+	if($loggedIn){
 		$result = mysqli_query($conn, "SELECT id, name FROM Plan");
 		$num_plans = mysqli_num_rows($result);
 ?>
