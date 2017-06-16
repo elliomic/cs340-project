@@ -1,5 +1,6 @@
 <?php include("_header.php"); ?>
 <?php
+	//page for employee's to add plans
 	include 'connectvarsEECS.php'; 
 	
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -14,8 +15,9 @@
 		$loggedIn = True;
 	}
 
-	if($loggedIn){
-?>
+	//doesn't let you view unless your logged in as an employee
+	//redirects to addplan.php on submit
+	if($loggedIn){ ?>
 	<h2 class="x-display2">Add A New Plan</h2>
 	<form action="addplan.php"  method="post">
 	  <fieldset>
@@ -53,8 +55,5 @@
 	echo "Please login as an employee.";
 }
 ?>
-
-
-
 
 <?php include("_footer.php"); ?>

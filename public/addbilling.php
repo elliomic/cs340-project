@@ -10,6 +10,7 @@
 		die('Could not connect: ' . mysqli_error());
 	}
 
+	//get user data from session
 	$user = mysqli_real_escape_string($conn, $_SESSION['user']);
 	$id = mysqli_real_escape_string($conn, $_SESSION['id']);
 	
