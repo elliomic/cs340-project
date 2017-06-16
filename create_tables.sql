@@ -26,6 +26,7 @@ CREATE PROCEDURE UpdateAddressCustomer(customerId INT, addNum INT, addStreet
 	UPDATE Customer SET address_id = addressId WHERE id = customerId;
 END
 $$
+DELIMITER ;
 
 CREATE TABLE Employee (
 	id				INT AUTO_INCREMENT NOT NULL,
