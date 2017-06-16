@@ -1,4 +1,4 @@
-<?php
+<?php   //updates Plan information in the database
 	include 'connectvarsEECS.php';
 
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -6,6 +6,7 @@
 		die('Could not connect: ' . mysqli_error());
 	}
 
+	//sanitize user input
 	$name = mysqli_real_escape_string($conn, $_POST['name']);
 	$price = mysqli_real_escape_string($conn, $_POST['price']);
 	$speed = mysqli_real_escape_string($conn, $_POST['speed']);

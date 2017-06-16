@@ -11,12 +11,14 @@
 	$password = mysqli_real_escape_string($conn, md5($_POST["password"]));
 
 	if ($emp == TRUE){
+	//do employee login
 			$result = mysqli_query($conn, "SELECT * FROM Employee WHERE username = '" . $user . "' AND pass = '" . $password . "'");
 		if (!$result) {
 			die("Query to show fields from table failed");
 		}
 		$num_row = mysqli_num_rows($result);
 
+		//start session cookie
 		if($num_row > 0) {
 			session_start();
 			$_SESSION['type'] = 'employee';
@@ -29,7 +31,7 @@
 		}
 	}
 	else{
-		
+	//do customer login	
 		$result = mysqli_query($conn, "SELECT * FROM Customer WHERE username = '" . $user . "' AND pass = '" . $password . "'");
 		if (!$result) {
 			die("Query to show fields from table failed");
