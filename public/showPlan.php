@@ -45,8 +45,7 @@
           <div class="x-flex__col-xs-6">
 		    <div class="x-flex__content">
 		      <div class="x-field--text">
-                <label class="x-field__label x-heading5 x-field__label--floating-label" for="name">Added by</label>
-                <input type="text" name="added_by" autocomplete="off" required value="<?php echo $plan[3] ?>" placeholder="Added by">
+                <input type="hidden" name="added_by" autocomplete="off" required value="<?php echo $plan[3] ?>" placeholder="Added by">
                 </div>
 		    </div>
 	      </div>
@@ -71,7 +70,7 @@
 					<?php } ?>
 				
 					</select>
-					<input class="x-button--solid" type="submit" name="action" value="add_address">
+					<input class="x-button--solid" type="submit" name="action" value="Add Address">
 				
 				<?php } ?>
 				</div>

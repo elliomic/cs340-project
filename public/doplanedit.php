@@ -13,14 +13,14 @@
 	$planID = mysqli_real_escape_string($conn, $_POST['planID']);
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
 
-	if($action == 'add_address') {
+	if($action == 'Add Address') {
 		$result = mysqli_query($conn, "UPDATE Plan SET name = '" . $name . "', price = " . $price . ", speed = " . $speed . ", added_by = " . $added_by . " WHERE id = " . $planID);
 		$result = mysqli_query($conn, "Insert Address_Plans SET plan_id = '" . $planID . "', address_id = " . $address[0] );
 		if($result){
 			echo 'Update successful';
 			}
 			else{
-				echo 'Update failed';
+				echo 'This plan is already available at this address.';
 		}
 		
 		

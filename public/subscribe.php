@@ -40,7 +40,7 @@ include 'connectvarsEECS.php';
 		echo clean_input($userInfo[2]) . ' ' . clean_input($userInfo[3]);
 		// Print the apartment number, if there is one
 		if(clean_input($userInfo[4]) != '') {
-			echo '#' . clean_input($addressInfo[2]);
+			echo ' #' . clean_input($userInfo[4]);
 		}
 		echo '<br>';
 		// City, State, Zip
