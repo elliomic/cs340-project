@@ -13,9 +13,6 @@
 
 	mysqli_query($conn,"INSERT INTO Plan (name, price, speed) VALUES ('" . $plan_name . "', " . $plan_cost . ", " . $plan_speed . " )");
 	header('Location: ./employee_account.php');
-
-
-
 	
 	mysqli_close($conn);
 	?>
