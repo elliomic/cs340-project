@@ -23,8 +23,14 @@
 	// $result = mysqli_query($conn, "SELECT p.name, p.price, p.speed, c.id FROM Plan p LEFT JOIN Address_Plans ap ON p.id = ap.plan_id LEFT JOIN Customer c ON ap.address_id = c.address_id AND c.username = '" . $user . "'");
 
 
-	$result = mysqli_query($conn, "SELECT p.name, p.price, p.speed, c.id, p.id FROM Plan p LEFT JOIN Customer c ON c.address_id IN (SELECT address_id FROM Address_Plans WHERE address_id = c.address_id AND plan_id = p.id AND c.id = 1)");
+	$query = "";
+	if(isset($_SESSION['id'])) {
+		$query = "SELECT p.name, p.price, p.speed, c.id, p.id FROM Plan p LEFT JOIN Customer c ON c.address_id IN (SELECT address_id FROM Address_Plans WHERE plan_id = p.id) AND c.id = " . $_SESSION['id'];
+	} else {	
+		$query = "SELECT p.name, p.price, p.speed, NULL, p.id FROM Plan p";
+	}
 
+	$result = mysqli_query($conn, $query);
 
 	$num_row = mysqli_num_rows($result);
 	
@@ -33,7 +39,7 @@
 	}
 	
 	echo "<table>";
-	echo "<tr><th>Plan Name</th><th>Speed</th><th>Price / Mo</th>";
+	echo '<tr style="margin:auto"><th>Plan Name</th><th>Speed</th><th>Price / Mo</th>';
 
 	if($loggedIn) {
 		echo "<th>Available at your location</th>";
@@ -44,22 +50,17 @@
 	for($i=0; $i<$num_row; $i++) {
 		$plan=mysqli_fetch_row($result);
 		echo '<tr><td>';
-		if($loggedIn) {
-			echo '<a href="subscribe.php?plan=' . $plan[4] . '">';
-		}
 		echo $plan[0];
-		if($loggedIn) {
-			echo '</a>';
-		}
-		echo '</td><td>' . $plan[2] . "</td><td>" . $plan[1] . "</td>";
+
+		echo '</td><td>' . clean_input($plan[2]) . "</td><td>" . clean_input($plan[1]) . "</td>";
 		
 		if($loggedIn) {
 			echo "<td>";
 
 			if(isset($plan[3])) {
-				echo '<div class="planYes">Yes!</div>';
+				echo '<a href="subscribe.php?plan='. clean_input($plan[4]) . '">' . 'Yes! Subscribe now!' . '</a>';
 			} else {
-				echo '<div class="planNo">No</div>';
+				echo 'No';
 			}
 
 			echo "</td>";

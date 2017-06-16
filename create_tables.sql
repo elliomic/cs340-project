@@ -7,6 +7,8 @@ DROP TABLE IF EXISTS Address;
 DROP TABLE IF EXISTS Employee;
 
 DROP PROCEDURE IF EXISTS UpdateAddressCustomer;
+DROP PROCEDURE IF EXISTS CheckValidState;
+
 DELIMITER $$
 CREATE PROCEDURE UpdateAddressCustomer(customerId INT, addNum INT, addStreet
 	VARCHAR(255), addAptNo INT, addCity VARCHAR(255), addSt CHAR(2), addZip DECIMAL(5))
@@ -26,6 +28,22 @@ CREATE PROCEDURE UpdateAddressCustomer(customerId INT, addNum INT, addStreet
 	UPDATE Customer SET address_id = addressId WHERE id = customerId;
 END
 $$
+
+
+CREATE PROCEDURE CheckValidState(s CHAR(2))
+BEGIN
+ IF s NOT IN ('AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DE',
+'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA',
+'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH',
+'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD',
+'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY') THEN
+ SIGNAL SQLSTATE '45000'
+ SET MESSAGE_TEXT = 'That is not a valid state.';
+ END IF;
+END;
+$$
+
+DELIMITER ;
 
 CREATE TABLE Employee (
 	id				INT AUTO_INCREMENT NOT NULL,
