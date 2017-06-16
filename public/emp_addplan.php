@@ -26,7 +26,7 @@
 			<div class="x-flex__content">
 			  <div class="x-field--text">
 				<label class="x-field__label x-heading5 x-field__label--floating-label" for="plan_speed">Speed</label>
-				<input class="x-field__input" type="text" name="plan_speed" placeholder="Speed">
+				<input class="x-field__input" type="text" pattern="[0-9]+" name="plan_speed" placeholder="Speed">
 			  </div>
 			</div>
 		  </div>
@@ -34,7 +34,7 @@
 			<div class="x-flex__content">
 			  <div class="x-field--text">
 				<label class="x-field__label x-heading5 x-field__label--floating-label" for="plan_cost">Cost</label>
-				<input class="x-field__input" type="text" name="plan_cost" placeholder="Cost">
+				<input class="x-field__input" type="text" pattern="[0-9]+" name="plan_cost" placeholder="Cost">
 			  </div>
 			</div>
 		  </div>
