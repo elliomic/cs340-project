@@ -42,6 +42,23 @@
 			  </a>
 			</li>
             <?php } ?>
+	<?php if(isset($_SESSION['type'])) {if($_SESSION['type']=='employee'){ ?>
+			<li class="polaris-item ">
+			  <a href="emp_customers.php " target="_self" class="polaris-link ">
+				<span class="polaris-trackname">Customers</span>
+			  </a>
+			</li>
+			<li class="polaris-item ">
+			  <a href="emp_addplan.php " target="_self" class="polaris-link ">
+				<span class="polaris-trackname">Add Plan</span>
+			  </a>
+			</li>
+			<li class="polaris-item ">
+			  <a href="emp_editplan.php " target="_self" class="polaris-link ">
+				<span class="polaris-trackname">Edit Plans</span>
+			  </a>
+			</li>
+	<?php }} ?>
 		  </ul>
 		  <ul class="polaris-personal">
 			<li class="polaris-item">
