@@ -101,12 +101,12 @@
 			$billingResult = mysqli_query($conn, $query);
 			$billingInfo = mysqli_fetch_row($billingResult);
 
-			echo '<h2>' . $planInfo[3] . '</h2>';
-			echo 'Speed: ' . $planInfo[5] . '<br>';
-			echo 'Price: ' . $planInfo[4] . '<br><br>';
-			echo $addressInfo[0] . ' ' . $addressInfo[1];
-			if($addressInfo[2] != '') {
-				echo '#' . $addressInfo[2];
+			echo '<h2>' . clean_input($planInfo[3]) . '</h2>';
+			echo 'Speed: ' . clean_input($planInfo[5]) . '<br>';
+			echo 'Price: ' . clean_input($planInfo[4]) . '<br><br>';
+			echo clean_input($addressInfo[0]) . ' ' . clean_input($addressInfo[1]);
+			if(clean_input($addressInfo[2]) != '') {
+				echo '#' . clean_input($addressInfo[2]);
 			}
 			echo '<br>';
 			echo  clean_input($addressInfo[3]) . ', ' .  clean_input($addressInfo[4]) . ', ' .  clean_input($addressInfo[5]);

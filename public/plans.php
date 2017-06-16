@@ -39,7 +39,7 @@
 	}
 	
 	echo "<table>";
-	echo "<tr><th>Plan Name</th><th>Speed</th><th>Price / Mo</th>";
+	echo '<tr style="margin:auto"><th>Plan Name</th><th>Speed</th><th>Price / Mo</th>';
 
 	if($loggedIn) {
 		echo "<th>Available at your location</th>";

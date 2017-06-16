@@ -36,12 +36,21 @@ include 'connectvarsEECS.php';
 		echo '<form action="dosubscribe.php"  method="post">';
 		echo '<input type="hidden" name="plan" value="' . clean_input($planId) . '">';
 		echo '<br>Address to subscribe at:<br><br>';
-		echo 'Number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[2]) . '><br>';
-		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[3]) . '"><br>';
-		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . clean_input($userInfo[4]) . '><br>';
-		echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[5]) . '"><br>';
-		echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[6]) . '><br>';
-		echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[7]) . '><br>';
+		
+		// echo 'Number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[2]) . '><br>';
+		// echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[3]) . '"><br>';
+		// echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . clean_input($userInfo[4]) . '><br>';
+		// echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[5]) . '"><br>';
+		// echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[6]) . '><br>';
+		// echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[7]) . '><br>';
+		
+		echo clean_input($userInfo[2]) . ' ' . clean_input($userInfo[3]);
+		if(clean_input($userInfo[4]) != '') {
+			echo '#' . clean_input($addressInfo[2]);
+		}
+		echo '<br>';
+		echo  clean_input($userInfo[5]) . ', ' .  clean_input($userInfo[6]) . ', ' .  clean_input($userInfo[7]);
+		echo '<br><br>';
 		
 		// Get billing info
 		$result = mysqli_query($conn, "SELECT id, name, cc_type, cc_number, expiration_date FROM Billing_Info WHERE user_id = " . $_SESSION['id']);
