@@ -23,7 +23,7 @@
 		// Print the name and address
 		echo '<h1>Account info for ' . $userInfo[0] . '</h1>';
 		
-		echo '<form action="update_empaccount.php"  method="post">';
+		echo '<form action="updateempaccount.php"  method="post">';
 		echo 'ID: <input type="text" name="id" autocomplete=off required title="3 to 20 characters" value="' . $_SESSION['id'] . '" disabled><br>';
 		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[1] . '"><br>';
 		echo 'Username: <input type="text" name="username" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[0] . '"><br>';
