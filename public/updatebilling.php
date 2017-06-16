@@ -20,6 +20,8 @@
 	$cardId = mysqli_real_escape_string($conn, $_POST['id']);
 	$action = mysqli_real_escape_string($conn, $_POST['action']);
 	
+	// There are two buttons the user can click from the accounts page: update and delete
+	// Check which one they pressed and do the appropriate action
 	if($action == 'Update') {
 		$query = "UPDATE Billing_Info SET name = '" . $name . "', cc_type = '" . $card . "', cc_number = " . $number . ", expiration_date = '" . $exp . "' WHERE id = " . $cardId;
 		$result = mysqli_query($conn, $query);

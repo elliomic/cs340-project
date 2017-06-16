@@ -19,9 +19,8 @@ include 'connectvarsEECS.php';
 		}
 		
 		$userInfo = mysqli_fetch_row($result);
-		
 		$planId = mysqli_real_escape_string($conn, $_GET['plan']);
-		
+		// Get the information about the plan they want to subscribe to 
 		$result = mysqli_query($conn, 'SELECT name, price, speed FROM Plan WHERE id = ' . $planId);
 		
 		if($result) {
@@ -37,11 +36,14 @@ include 'connectvarsEECS.php';
 		echo '<input type="hidden" name="plan" value="' . clean_input($planId) . '">';
 		echo '<br>Address to subscribe at:<br><br>';
 		
+		// Number and street of addres
 		echo clean_input($userInfo[2]) . ' ' . clean_input($userInfo[3]);
+		// Print the apartment number, if there is one
 		if(clean_input($userInfo[4]) != '') {
 			echo '#' . clean_input($addressInfo[2]);
 		}
 		echo '<br>';
+		// City, State, Zip
 		echo  clean_input($userInfo[5]) . ', ' .  clean_input($userInfo[6]) . ', ' .  clean_input($userInfo[7]);
 		echo '<br><br>';
 		
@@ -49,6 +51,9 @@ include 'connectvarsEECS.php';
 		$result = mysqli_query($conn, "SELECT id, name, cc_type, cc_number, expiration_date FROM Billing_Info WHERE user_id = " . $_SESSION['id']);
 		$num_cards = mysqli_num_rows($result);
 		
+		// Make a dropdown list with all of the customer's cards they have on file.
+		// If they have no cards, then print an error and a link back to their account page
+		// so they can enter a new card
 		echo 'Payment:';
 		if($num_cards > 0) {
 			echo '<select name="card">';

@@ -25,10 +25,10 @@
 		
 		echo '<form action="updateempaccount.php"  method="post">';
 		echo 'ID: <input type="text" name="id" autocomplete=off required title="3 to 20 characters" value="' . $_SESSION['id'] . '" disabled><br>';
-		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[1] . '"><br>';
-		echo 'Username: <input type="text" name="username" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[0] . '"><br>';
-		echo 'Password: <input type="password" name="pass" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[2] . '"><br>';
-		echo 'Annual Salary: <input type="text" name="salary" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[3]  . '" disabled><br>';
+		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[1]) . '"><br>';
+		echo 'Username: <input type="text" name="username" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[0]) . '"><br>';
+		echo 'Password: <input type="password" name="pass" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[2]) . '"><br>';
+		echo 'Annual Salary: <input type="text" name="salary" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[3])  . '" disabled><br>';
 
 		echo '<div class="x-flex__content"><input type="submit" name="action" value="Update" class="x-button--solid"></div>';
 		echo '</form>';

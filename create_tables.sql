@@ -1,3 +1,5 @@
+-- This script deploys all database tables, stored procedures, and test data
+
 DROP TABLE IF EXISTS Address_Plans;
 DROP TABLE IF EXISTS Subscription;
 DROP TABLE IF EXISTS Plan;
@@ -137,3 +139,10 @@ INSERT INTO Address_Plans (address_id, plan_id) VALUES
 (1, 1),
 (2, 1),
 (2, 2);
+
+INSERT INTO Billing_Info (cc_number, cc_type, expiration_date, name, user_id) VALUES
+(9999444477773333, 'VISA', '3/14/2022', 'Bob Bobbington', 2);
+
+INSERT INTO Subscription (plan_id, address_id, billing_id, customer_id) VALUES
+(1, 1, 1, 2);
+

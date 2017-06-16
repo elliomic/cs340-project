@@ -1,8 +1,5 @@
 <?php include '_header.php' ?>
 <?php
-
-
-//r change the value of $dbuser and $dbpass to your username and password
 	error_reporting(E_ALL); ini_set('display_errors', 1);
 
 	include 'connectvarsEECS.php'; 
@@ -15,11 +12,14 @@
 	$user = "";
 	$loggedIn = False;
 
+	// See if the user is logged in
 	if(isset($_SESSION['type']) && isset($_SESSION['user']) && $_SESSION['type'] == 'customer') {
 		$user = mysqli_real_escape_string($conn, $_SESSION['user']);
 		$loggedIn = True;
 	}
 
+	// If the user is logged in, then run a query that checks if each plan is available at that users address.
+	// If they aren't logged in, then just get all plans
 	$query = "";
 	if(isset($_SESSION['id'])) {
 		$query = "SELECT p.name, p.price, p.speed, c.id, p.id FROM Plan p LEFT JOIN Customer c ON c.address_id IN (SELECT address_id FROM Address_Plans WHERE plan_id = p.id) AND c.id = " . $_SESSION['id'];
@@ -64,14 +64,10 @@
 		}
 		
 		echo "</tr>";
-		// echo "<option value='$tablename[0]' >".$tablename[0]."</option>";
 	}
 	
 	echo "</table>";
-	//echo "</select>";
-	//echo "<div><input type=\"submit\" value=\"submit\"></div>";
-	//echo "</form>";
-		
+
 	mysqli_free_result($result);
 	mysqli_close($conn);
 	?>

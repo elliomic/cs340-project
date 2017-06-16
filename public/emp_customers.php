@@ -36,7 +36,7 @@
 		// Select a database table to display
 		for($i=0; $i<$num_row; $i++) {
 			$customer=mysqli_fetch_row($result);
-			echo "<tr><td>" . $customer[0] . "</td><td>" . $customer[1] . "</td><td>" . $customer[2] . "</td><td>" . $customer[3] . " " . $customer[4] . " " . $customer[5] . ", " . $customer[6] . "</td>";
+			echo "<tr><td>" . clean_input($customer[0]) . "</td><td>" . clean_input($customer[1]) . "</td><td>" . clean_input($customer[2]) . "</td><td>" . clean_input($customer[3]) . " " . clean_input($customer[4]) . " " . clean_input($customer[5]) . ", " . clean_input($customer[6]) . "</td>";
 			
 			echo "<tr>";
 		}

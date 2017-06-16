@@ -43,7 +43,7 @@
 		} ?>
 		</form>
 
-		<iframe style="margin:10px" width="100%" height="200" frameBorder="0" name="editFrame" id="editFrame"></iframe>
+		<iframe style="margin:10px" width="100%" height="400" frameBorder="0" name="editFrame" id="editFrame"></iframe>
 	<?php }
 	else{
 		echo "Please login as an employee.";
