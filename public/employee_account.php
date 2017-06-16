@@ -9,7 +9,7 @@
 
 		}
 		$user = mysqli_real_escape_string($conn, $_SESSION['user']);
-		$result = mysqli_query($conn, "SELECT c.username, c.name, a.num, a.street, a.apt_no, a.city, a.state, a.zip FROM Customer c LEFT JOIN Address a ON c.address_id = a.id WHERE c.id = " . $_SESSION['id']);
+		$result = mysqli_query($conn, "SELECT username, name, pass FROM Employee WHERE id = " . $_SESSION['id']);
 		$num_row = mysqli_num_rows($result);
 		
 		if (!$result) {
@@ -22,14 +22,14 @@
 
 		// Print the name and address
 		echo '<h1>Account info for ' . $userInfo[0] . '</h1>';
-		echo '<form action="updateaccount.php"  method="post">';
+		
+		echo '<form action="update_empaccount.php"  method="post">';
+		echo 'ID: <input type="text" name="id" autocomplete=off required title="3 to 20 characters" value="' . $_SESSION['id'] . '" disabled><br>';
 		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[1] . '"><br>';
-		echo 'Address number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[2] . '><br>';
-		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[3] . '"><br>';
-		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . $userInfo[4] . '><br>';
-		echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[5] . '"><br>';
-		echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[6] . '><br>';
-		echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[7] . '><br>';
+		echo 'Username: <input type="text" name="username" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[0] . '"><br>';
+		echo 'Password: <input type="password" name="pass" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[2] . '"><br>';
+		echo 'Branch: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[2] % 2 . '" disabled><br>';
+
 
 		echo '<div class="x-flex__content"><input type="submit" name="action" value="Update" class="x-button--solid"></div>';
 		echo '</form>';
@@ -41,7 +41,7 @@
 		$num_row = mysqli_num_rows($result);
 		
 		echo "<hr>";
-		echo "<h1>My Customers</h1>";
+
 		
 		echo "<h1><a href='emp_addplan.php'>Add a plan<a></h1>";
 		
