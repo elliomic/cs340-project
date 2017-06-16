@@ -18,10 +18,9 @@
 	echo $added_by.'<br>';
 	echo $planID.'<br>';
 
-	$result = mysqli_query($conn, 'UPDATE Plan SET name=' . $name . ', price=' . $price . ', speed=' . $speed . ', added_by=' . $added_by . ' WHERE id=' . $planID);
+	$result = mysqli_query($conn, "UPDATE Plan SET name = '" . $name . "', price = " . $price . ", speed = " . $speed . ", added_by = " . $added_by . " WHERE id = " . $planID);
 	
-	$rows = mysqli_affected_rows($result);
-	if($rows=1){
+	if($result){
 		echo 'Update successful';
 	}
 	else{
