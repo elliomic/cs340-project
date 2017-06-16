@@ -18,6 +18,7 @@
 	$number = mysqli_real_escape_string($conn, $_POST['number']);
 	$exp = mysqli_real_escape_string($conn, $_POST['exp']);
 	
+	// Inserts new billing information
 	$query = "INSERT INTO Billing_Info (name, cc_type, cc_number, expiration_date, user_id) VALUES ('" . $name . "', '" . $card . "', " . $number . ", '" . $exp . "', " . $id . " )";
 	
 	$result = mysqli_query($conn, $query);

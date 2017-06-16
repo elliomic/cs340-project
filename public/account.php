@@ -8,6 +8,8 @@
 			die('Could not connect: ' . mysqli_error());
 
 		}
+		
+		// Get he user's username and address information
 		$user = mysqli_real_escape_string($conn, $_SESSION['user']);
 		$result = mysqli_query($conn, "SELECT c.username, c.name, a.num, a.street, a.apt_no, a.city, a.state, a.zip FROM Customer c LEFT JOIN Address a ON c.address_id = a.id WHERE c.id = " . $_SESSION['id']);
 		$num_row = mysqli_num_rows($result);
@@ -73,6 +75,7 @@
 		
 		echo '<hr><h1>My plans</h1><br>';
 		
+		// Gets a list of all of this user's plans
 		$query = 'SELECT s.plan_id, s.address_id, s.billing_id, p.name, p.price, p.speed FROM Subscription s LEFT JOIN Plan p ON s.plan_id = p.id WHERE customer_id = ' . $_SESSION['id'];
 		$result = mysqli_query($conn, $query);
 		$num_row = mysqli_num_rows($result);

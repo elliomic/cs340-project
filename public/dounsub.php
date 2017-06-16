@@ -14,6 +14,7 @@
 	$user = mysqli_real_escape_string($conn, $_SESSION['user']);
 	$id = mysqli_real_escape_string($conn, $_SESSION['id']);
 	
+	// Deletes a subscription from the database
 	$query = "DELETE FROM Subscription WHERE plan_id = " . $plan . " AND address_id = " . $address;
 	mysqli_query($conn, $query);
 
