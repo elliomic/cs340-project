@@ -117,3 +117,23 @@ CREATE TABLE Address_Plans (
 	FOREIGN KEY (plan_id) REFERENCES Plan(id) ON DELETE CASCADE,
 	FOREIGN KEY (address_id) REFERENCES Address(id) ON DELETE CASCADE
 ) ENGINE=InnoDB, CHARACTER SET=UTF8;
+
+INSERT INTO Address (num, street, state, city, zip, apt_no) VALUES
+(123, '1st St.', 'OR', 'Corvallis', 97333, NULL),
+(456, '2nd St.', 'OR', 'Corvallis', 97333, NULL);
+
+INSERT INTO Customer (username, name, address_id, pass) VALUES
+('juli', 'Julianne Schutfort', 1, MD5('tigger')),
+('bob', 'Bob', 1, MD5('password123'));
+
+INSERT INTO Employee (username, salary, name, pass) VALUES
+('hulk', 20000, 'Bruce Banner', MD5('smash'));
+
+INSERT INTO Plan (name, price, speed, added_by) VALUES
+('Sluggy 56k', 10, 56, 1),
+('Cheetah Cable', 49, 500, 1);
+
+INSERT INTO Address_Plans (address_id, plan_id) VALUES
+(1, 1),
+(2, 1),
+(2, 2);
