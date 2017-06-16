@@ -36,12 +36,19 @@
 			</li>
 
 	<?php if(isset($_SESSION['type'])) {?>
+	<?php if($_SESSION['type']=='customer'){?>
 			<li class="polaris-item">
 			  <a href="account.php" target="_self" class="polaris-link">
 				<span class="polaris-trackname">Account</span>
 			  </a>
 			</li>
-            <?php } ?>
+	<?php } else {?>
+			<li class="polaris-item">
+			  <a href="employee_account.php" target="_self" class="polaris-link">
+				<span class="polaris-trackname">Account</span>
+			  </a>
+			</li>
+            <?php }} ?>
 	<?php if(isset($_SESSION['type'])) {if($_SESSION['type']=='employee'){ ?>
 			<li class="polaris-item ">
 			  <a href="emp_customers.php " target="_self" class="polaris-link ">
