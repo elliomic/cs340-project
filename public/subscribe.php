@@ -68,7 +68,7 @@ include 'connectvarsEECS.php';
 			echo '<input type="submit" name="action" value="Subscribe">';			
 			echo '</select>';
 		} else {
-			echo 'Please add a card before subscribing to a plan.';
+			echo 'Please <a href="account.php">add a card</a> before subscribing to a plan.';
 		}		
 		
 		echo '</form>';

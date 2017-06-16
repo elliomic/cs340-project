@@ -36,6 +36,8 @@
   <input type="text" name="user" autocomplete=off pattern=".{3,20}" required title="3 to 20 characters" ><br>
   Password:
   <input type="password" name="password" autocomplete=off pattern=".{5,20}" required title="5 to 20 characters"><br>
+	Employee?
+  <input type="checkbox" name="employee"><br>
 
 <input type="submit" name="submit">
 </form>
