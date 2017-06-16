@@ -39,7 +39,7 @@
 	Employee?
   <input type="checkbox" name="employee"><br>
 
-<input type="submit" name="submit">
+<div class="x-flex__content"><input type="submit" name="submit" class="x-button--solid"></div>
 </form>
 
 
