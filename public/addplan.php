@@ -11,8 +11,8 @@
 	$plan_speed = mysqli_real_escape_string($conn,$_POST['plan_speed']);
 	$plan_cost = mysqli_real_escape_string($conn,$_POST['plan_cost']);
 
-	$query = "INSERT INTO plans (name, cost, speed) VALUES ('" . $plan_name . "', " . $plan_speed . ", " . $plan_cost . " )";
-		
+	mysqli_query($conn,"INSERT INTO Plan (name, price, speed) VALUES ('" . $plan_name . "', " . $plan_cost . ", " . $plan_speed . " )");
+	header('Location: ./employee_account.php');
 
 
 
