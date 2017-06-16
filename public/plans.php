@@ -50,22 +50,17 @@
 	for($i=0; $i<$num_row; $i++) {
 		$plan=mysqli_fetch_row($result);
 		echo '<tr><td>';
-		if($loggedIn) {
-			echo '<a href="subscribe.php?plan=' . clean_input($plan[4]) . '">';
-		}
 		echo $plan[0];
-		if($loggedIn) {
-			echo '</a>';
-		}
+
 		echo '</td><td>' . clean_input($plan[2]) . "</td><td>" . clean_input($plan[1]) . "</td>";
 		
 		if($loggedIn) {
 			echo "<td>";
 
 			if(isset($plan[3])) {
-				echo '<div class="planYes">Yes!</div>';
+				echo '<a href="subscribe.php?plan='. clean_input($plan[4]) . '">' . 'Yes! Subscribe now!' . '</a>';
 			} else {
-				echo '<div class="planNo">No</div>';
+				echo 'No';
 			}
 
 			echo "</td>";

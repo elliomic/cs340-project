@@ -26,7 +26,7 @@
 		echo 'Name: <input type="text" name="name" autocomplete=off required pattern=".{3,255}" title="3 to 255 characters" value="' . clean_input($userInfo[1]) . '"><br>';
 		echo 'Address number: <input type="text" name="num" autocomplete=off pattern="([0-9])*" required title="Enter a number" value=' . clean_input($userInfo[2]) . '><br>';
 		echo 'Street: <input type="text" name="street" autocomplete=off required pattern=".{3,255}" title="3 to 255 characters" value="' . clean_input($userInfo[3]) . '"><br>';
-		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off pattern="([0-9])*" required title="Enter a number" value=' . clean_input($userInfo[4]) . '><br>';
+		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off pattern="([0-9])*" title="Enter a number" value=' . clean_input($userInfo[4]) . '><br>';
 		echo 'City: <input type="text" name="city" autocomplete=off required pattern=".{3,255}" title="3 to 255 characters" value="' . clean_input($userInfo[5]) . '"><br>';
 		echo 'State: <input type="text" name="state" autocomplete=off pattern="([A-Z]){2,2}" required title="2 letters" value=' . clean_input($userInfo[6]) . '><br>';
 		echo 'Zip: <input type="text" name="zip" autocomplete=off required pattern="[0-9]{5,5}" title="5 digits" value=' . clean_input($userInfo[7]) . '><br>';
