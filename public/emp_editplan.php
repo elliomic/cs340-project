@@ -28,7 +28,7 @@
 				echo '<option value="' . $thisPlan[0] . '">' . $thisPlan[1] . '</option>';
 			}
 		
-			echo '<input type="submit" name="action" value="Choose plan">';
+			echo '<input class="x-button--solid" type="submit" name="action" value="Choose plan">';
 			echo '</select>';
 		}
 		else {
