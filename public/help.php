@@ -8,7 +8,7 @@
   <p class="cui-article-section-message">If you are an instructor that is having any trouble at all grading this web site, then email <a href="mailto:morgaalb@oregonstate.edu">Albert Morgan</a></p>
   <br>  
   <h2 class="cui-article-section-title">Q: How do I sign up?</h2>
-  <p class="cui-article-section-message">Call us at 1-800-7-PEBCAK (1-800-773-2225) to create an account. Then visit our <a href="plans.php">plan list</a> to pick a plan.</p>
+  <p class="cui-article-section-message">Call us at 1-800-7-PEBCAK (1-800-773-2225) to create an account (or check the Canvas grading sheet for your info!). Then visit our <a href="plans.php">plan list</a> to pick a plan.</p>
   <br>
   <h2 class="cui-article-section-title">Q: How do I log in to my account?</h2>
   <p class="cui-article-section-message">Visit our <a href="login.php">account login page</a> to log in to your account.</p>
