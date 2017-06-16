@@ -25,3 +25,10 @@ function get_logged_in_user_id() {
   }
   return 0;
 }
+
+function clean_input($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
