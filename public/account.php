@@ -21,15 +21,15 @@
 		$userInfo = mysqli_fetch_row($result);
 
 		// Print the name and address
-		echo '<h1>Account info for ' . $userInfo[0] . '</h1>';
+		echo '<h1>Account info for ' . clean_input($userInfo[0]) . '</h1>';
 		echo '<form action="updateaccount.php"  method="post">';
-		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[1] . '"><br>';
-		echo 'Address number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[2] . '><br>';
-		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[3] . '"><br>';
-		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . $userInfo[4] . '><br>';
-		echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[5] . '"><br>';
-		echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[6] . '><br>';
-		echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . $userInfo[7] . '><br>';
+		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[1]) . '"><br>';
+		echo 'Address number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[2]) . '><br>';
+		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[3]) . '"><br>';
+		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . clean_input($userInfo[4]) . '><br>';
+		echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[5]) . '"><br>';
+		echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[6]) . '><br>';
+		echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[7]) . '><br>';
 
 		echo '<div class="x-flex__content"><input type="submit" name="action" value="Update" class="x-button--solid"></div>';
 		echo '</form>';
@@ -47,11 +47,11 @@
 		for($i = 0; $i < $num_row; $i++) {
 			$cardInfo = mysqli_fetch_row($result);
 			echo '<form action="updatebilling.php" method="post">';
-			echo '<input type="hidden" name="id" value="' . $cardInfo[0] . '">';
-			echo 'Name: <input type="text" name="name" autocomplete=off required value="' . $cardInfo[1] . '"><br>';
-			echo 'Card: <input type="text" name="card" autocomplete=off required value=' . $cardInfo[2] . '><br>';
-			echo 'Number: <input type="text" name="number" autocomplete=off required value=' . $cardInfo[3] . '><br>';
-			echo 'Expiration: <input type="date" name="exp" autocomplete=off required value=' . $cardInfo[4] . '><br>';
+			echo '<input type="hidden" name="id" value="' . clean_input($cardInfo[0]) . '">';
+			echo 'Name: <input type="text" name="name" autocomplete=off required value="' . clean_input($cardInfo[1]) . '"><br>';
+			echo 'Card: <input type="text" name="card" autocomplete=off required value=' . clean_input($cardInfo[2]) . '><br>';
+			echo 'Number: <input type="text" name="number" autocomplete=off required value=' . clean_input($cardInfo[3]) . '><br>';
+			echo 'Expiration: <input type="date" name="exp" autocomplete=off required value=' . clean_input($cardInfo[4]) . '><br>';
 			echo '<div class="x-flex__content"><input type="submit" name="action" value="Update" class="x-button--solid"></div>';
 			echo '<div class="x-flex__content"><input type="submit" name="action" value="Delete" class="x-button--solid"></div>';
 			echo '</form>';
@@ -88,6 +88,7 @@
 		}
 
 		
+		// Print out all the plans I am subscribed to
 		for($i = 0; $i < $num_row; $i++) {
 			$planInfo = mysqli_fetch_row($result);
 			// Get address info for this plan
@@ -108,16 +109,16 @@
 				echo '#' . $addressInfo[2];
 			}
 			echo '<br>';
-			echo $addressInfo[3] . ', ' . $addressInfo[4] . ', ' . $addressInfo[5];
+			echo  clean_input($addressInfo[3]) . ', ' .  clean_input($addressInfo[4]) . ', ' .  clean_input($addressInfo[5]);
 			echo '<br><br>';
-			echo 'Billing: ' . $billingInfo[0] . ' ending with ' . substr((string)$billingInfo[1], -4);
+			echo 'Billing: ' . clean_input($billingInfo[0]) . ' ending with ' . clean_input(substr((string)$billingInfo[1], -4));
 			echo '<form action="dounsub.php" method="post">';
-			echo '<input type="hidden" name="plan" value="' . $planInfo[0] . '">';
-			echo '<input type="hidden" name="address" value="' . $planInfo[1] . '">';
+			echo '<input type="hidden" name="plan" value="' . clean_input($planInfo[0]) . '">';
+			echo '<input type="hidden" name="address" value="' . clean_input($planInfo[1]) . '">';
 			echo '<div class="x-flex__content"><input type="submit" name="action" value="Unsubscribe" class="x-button--solid"></div>';
 			echo '</form>';
 		}
-		
+			
 		mysqli_close($conn);
 	}
 	?>
