@@ -30,26 +30,6 @@ CREATE PROCEDURE UpdateAddressCustomer(customerId INT, addNum INT, addStreet
 END
 $$
 
-CREATE PROCEDURE UpdateAddressEmployee(employeeId INT, addNum INT, addStreet
-	VARCHAR(255), addAptNo INT, addCity VARCHAR(255), addSt CHAR(2), addZip DECIMAL(5))
-	BEGIN
-		DECLARE addressId INT;
-		IF NOT EXISTS(SELECT * FROM Address WHERE num = addNum AND street = addStreet AND (addAptNo IS NULL OR apt_no = addAptNo) AND city = addCity AND state = addSt AND zip = addZip) THEN
-		BEGIN
-			INSERT INTO Address (num, street, apt_no, city, state, zip)
-			VALUES (addNum, addStreet, addAptNo, addCity, addSt, addZip);
-		END;
-	END IF;
-	
-	SET addressId = (SELECT id FROM Address WHERE num = addNum AND
-	street = addStreet AND (addAptNo IS NULL OR apt_no = addAptNo) AND
-	city = addCity AND state = addSt AND zip = addZip);
-	
-	UPDATE Employee SET address_id = addressId WHERE id = customerId;
-END
-$$
-
-
 CREATE PROCEDURE CheckValidState(s CHAR(2))
 BEGIN
  IF s NOT IN ('AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DE',
@@ -139,8 +119,8 @@ CREATE TABLE Address_Plans (
 ) ENGINE=InnoDB, CHARACTER SET=UTF8;
 
 INSERT INTO Address (num, street, state, city, zip, apt_no) VALUES
-(123, '1st St.', 'OR', 'Corvallis', 97333, NULL),
-(456, '2nd St.', 'OR', 'Corvallis', 97333, NULL);
+(123, '1st St.', 'OR', 'Corvallis', 97333, 12),
+(456, '2nd St.', 'OR', 'Corvallis', 97333, 4);
 
 INSERT INTO Customer (username, name, address_id, pass) VALUES
 ('juli', 'Julianne Schutfort', 1, MD5('tigger')),
