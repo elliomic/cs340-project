@@ -14,6 +14,7 @@
 		$result = mysqli_query($conn, "SELECT c.username, c.name, a.num, a.street, a.apt_no, a.city, a.state, a.zip FROM Customer c LEFT JOIN Address a ON c.address_id = a.id WHERE c.id = " . $_SESSION['id']);
 		$num_row = mysqli_num_rows($result);
 		
+		//redirect to login page if query fails
 		if (!$result) {
 			mysqli_free_result($result);
 			mysqli_close($conn);
@@ -38,6 +39,7 @@
 			
 		mysqli_free_result($result);
 		
+		//query for credit card data
 		$result = mysqli_query($conn, "SELECT id, name, cc_type, cc_number, expiration_date FROM Billing_Info WHERE user_id = " . $_SESSION['id']);
 		
 		$num_row = mysqli_num_rows($result);

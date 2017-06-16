@@ -1,5 +1,6 @@
 <?php include("_header.php"); ?>
 <?php
+	//page for employee's to add plans
 	include 'connectvarsEECS.php'; 
 	
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -14,8 +15,9 @@
 		$loggedIn = True;
 	}
 
-	if($loggedIn){
-?>
+	//doesn't let you view unless your logged in as an employee
+	//redirects to addplan.php on submit
+	if($loggedIn){ ?>
 	<h2 class="x-display2">Add A New Plan</h2>
 	<form action="addplan.php"  method="post">
 	  <fieldset>
@@ -32,7 +34,7 @@
 			<div class="x-flex__content">
 			  <div class="x-field--text">
 				<label class="x-field__label x-heading5 x-field__label--floating-label" for="plan_speed">Speed</label>
-				<input class="x-field__input" type="text" name="plan_speed" placeholder="Speed">
+				<input class="x-field__input" type="text" pattern="[0-9]+" name="plan_speed" placeholder="Speed">
 			  </div>
 			</div>
 		  </div>
@@ -40,7 +42,7 @@
 			<div class="x-flex__content">
 			  <div class="x-field--text">
 				<label class="x-field__label x-heading5 x-field__label--floating-label" for="plan_cost">Cost</label>
-				<input class="x-field__input" type="text" name="plan_cost" placeholder="Cost">
+				<input class="x-field__input" type="text" pattern="[0-9]+" name="plan_cost" placeholder="Cost">
 			  </div>
 			</div>
 		  </div>
@@ -53,8 +55,5 @@
 	echo "Please login as an employee.";
 }
 ?>
-
-
-
 
 <?php include("_footer.php"); ?>

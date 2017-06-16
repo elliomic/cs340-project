@@ -79,6 +79,11 @@
 			  </a>
               <?php } ?>
 			</li>
+			<li class="polaris-item ">
+			  <a href="help.php" target="_self" class="polaris-link ">
+				<span class="polaris-trackname">Help</span>
+			  </a>
+			</li>
 		  </ul>
 		</div>
 	  </div>
