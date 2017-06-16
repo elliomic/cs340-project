@@ -14,7 +14,7 @@
 	<form action="addplan.php"  method="post">
 	  <fieldset>
 		<div class="x-flex-row center-xs middle-xs">
-		  <div class="x-flex__col-xs-12 x-flex__col-md-8">
+		  <div class="x-flex__col-xs-12 x-flex__col-md-10">
 			<div class="x-flex__content">
 			  <div class="x-field--text">
 				<label class="x-field__label x-heading5 x-field__label--floating-label" for="plan_name">Plan Name</label>
@@ -22,19 +22,19 @@
 			  </div>
 			</div>
 		  </div>
-		  <div class="x-flex__col-xs-12 x-flex__col-md-4">
+		  <div class="x-flex__col-xs-12 x-flex__col-md-5">
 			<div class="x-flex__content">
 			  <div class="x-field--text">
-				<label class="x-field__label x-heading5 x-field__label--floating-label" for="plan_name">Speed</label>
-				<input class="x-field__input" type="number" name="plan_speed">
+				<label class="x-field__label x-heading5 x-field__label--floating-label" for="plan_speed">Speed</label>
+				<input class="x-field__input" type="text" name="plan_speed" placeholder="Speed">
 			  </div>
 			</div>
 		  </div>
-		  <div class="x-flex__col-xs-12 x-flex__col-md-4">
+		  <div class="x-flex__col-xs-12 x-flex__col-md-5">
 			<div class="x-flex__content">
 			  <div class="x-field--text">
-				<label class="x-field__label x-heading5 x-field__label--floating-label" for="plan_name">Cost</label>
-				<input class="x-field__input" type="number" name="plan_cost">
+				<label class="x-field__label x-heading5 x-field__label--floating-label" for="plan_cost">Cost</label>
+				<input class="x-field__input" type="text" name="plan_cost" placeholder="Cost">
 			  </div>
 			</div>
 		  </div>
