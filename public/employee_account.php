@@ -9,7 +9,7 @@
 
 		}
 		$user = mysqli_real_escape_string($conn, $_SESSION['user']);
-		$result = mysqli_query($conn, "SELECT username, name, pass FROM Employee WHERE id = " . $_SESSION['id']);
+		$result = mysqli_query($conn, "SELECT username, name, pass, salary FROM Employee WHERE id = " . $_SESSION['id']);
 		$num_row = mysqli_num_rows($result);
 		
 		if (!$result) {
@@ -28,8 +28,7 @@
 		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[1] . '"><br>';
 		echo 'Username: <input type="text" name="username" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[0] . '"><br>';
 		echo 'Password: <input type="password" name="pass" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[2] . '"><br>';
-		echo 'Branch: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[2] % 2 . '" disabled><br>';
-
+		echo 'Annual Salary: <input type="text" name="salary" autocomplete=off required title="3 to 20 characters" value="' . $userInfo[3]  . '" disabled><br>';
 
 		echo '<div class="x-flex__content"><input type="submit" name="action" value="Update" class="x-button--solid"></div>';
 		echo '</form>';
