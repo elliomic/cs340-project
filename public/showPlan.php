@@ -11,7 +11,7 @@
 	$plan = mysqli_fetch_row($result);
 
 	echo '<form action="doplanedit.php" method="post">';
-	echo 'name: <input type="text" name="name" autocomplete=off required value=' . $plan[0] . '><br>';
+	echo 'name: <input type="text" name="name" autocomplete=off required value="' . $plan[0] . '"><br>';
 	echo 'price: <input type="text" name="price" autocomplete=off required value=' . $plan[1] . '><br>';
 	echo 'speed: <input type="text" name="speed" autocomplete=off required value=' . $plan[2] . '><br>';
 	echo 'added by: <input type="text" name="added_by" autocomplete=off required value=' . $plan[3] . '><br>';
