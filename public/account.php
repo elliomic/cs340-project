@@ -23,13 +23,13 @@
 		// Print the name and address
 		echo '<h1>Account info for ' . clean_input($userInfo[0]) . '</h1>';
 		echo '<form action="updateaccount.php"  method="post">';
-		echo 'Name: <input type="text" name="name" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[1]) . '"><br>';
-		echo 'Address number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[2]) . '><br>';
-		echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[3]) . '"><br>';
-		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . clean_input($userInfo[4]) . '><br>';
-		echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[5]) . '"><br>';
-		echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[6]) . '><br>';
-		echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[7]) . '><br>';
+		echo 'Name: <input type="text" name="name" autocomplete=off required pattern=".{3,255}" title="3 to 255 characters" value="' . clean_input($userInfo[1]) . '"><br>';
+		echo 'Address number: <input type="text" name="num" autocomplete=off pattern="([0-9])*" required title="Enter a number" value=' . clean_input($userInfo[2]) . '><br>';
+		echo 'Street: <input type="text" name="street" autocomplete=off required pattern=".{3,255}" title="3 to 255 characters" value="' . clean_input($userInfo[3]) . '"><br>';
+		echo 'Apt. No.: <input type="text" name="apt" autocomplete=off pattern="([0-9])*" required title="Enter a number" value=' . clean_input($userInfo[4]) . '><br>';
+		echo 'City: <input type="text" name="city" autocomplete=off required pattern=".{3,255}" title="3 to 255 characters" value="' . clean_input($userInfo[5]) . '"><br>';
+		echo 'State: <input type="text" name="state" autocomplete=off pattern="([A-Z]){2,2}" required title="2 letters" value=' . clean_input($userInfo[6]) . '><br>';
+		echo 'Zip: <input type="text" name="zip" autocomplete=off required pattern="[0-9]{5,5}" title="5 digits" value=' . clean_input($userInfo[7]) . '><br>';
 
 		echo '<div class="x-flex__content"><input type="submit" name="action" value="Update" class="x-button--solid"></div>';
 		echo '</form>';
@@ -48,9 +48,9 @@
 			$cardInfo = mysqli_fetch_row($result);
 			echo '<form action="updatebilling.php" method="post">';
 			echo '<input type="hidden" name="id" value="' . clean_input($cardInfo[0]) . '">';
-			echo 'Name: <input type="text" name="name" autocomplete=off required value="' . clean_input($cardInfo[1]) . '"><br>';
-			echo 'Card: <input type="text" name="card" autocomplete=off required value=' . clean_input($cardInfo[2]) . '><br>';
-			echo 'Number: <input type="text" name="number" autocomplete=off required value=' . clean_input($cardInfo[3]) . '><br>';
+			echo 'Your Name: <input type="text" name="name" autocomplete=off required pattern=".{3,255}" title="3 to 255 characters" value="' . clean_input($cardInfo[1]) . '"><br>';
+			echo 'Card Name: <input type="text" name="card" autocomplete=off required pattern=".{3,255}" title="3 to 255 characters" value=' . clean_input($cardInfo[2]) . '><br>';
+			echo 'Number: <input type="text" name="number" autocomplete=off required pattern="([0-9]){16,16}" required title="16 digits" value=' . clean_input($cardInfo[3]) . '><br>';
 			echo 'Expiration: <input type="date" name="exp" autocomplete=off required value=' . clean_input($cardInfo[4]) . '><br>';
 			echo '<div class="x-flex__content"><input type="submit" name="action" value="Update" class="x-button--solid"></div>';
 			echo '<div class="x-flex__content"><input type="submit" name="action" value="Delete" class="x-button--solid"></div>';
@@ -62,9 +62,9 @@
 		
 		// Add a new card
 		echo '<form action="addbilling.php" method="post">';
-		echo 'Name: <input type="text" name="name" autocomplete=off required><br>';
-		echo 'Card: <input type="text" name="card" autocomplete=off required><br>';
-		echo 'Number: <input type="text" name="number" autocomplete=off required><br>';
+		echo 'Your Name: <input type="text" name="name" pattern=".{3,255}" title="3 to 255 characters" autocomplete=off required><br>';
+		echo 'Card Name: <input type="text" name="card" pattern=".{3,255}" title="3 to 255 characters" autocomplete=off required><br>';
+		echo 'Number: <input type="text" name="number" pattern="([0-9]){16,16}" required title="16 digits" autocomplete=off required><br>';
 		echo 'Expiration: <input type="date" name="exp" autocomplete=off required><br>';
 		echo '<div class="x-flex__content"><input type="submit" name="add" value="Add" class="x-button--solid"></div>';
 		echo '</form>';
