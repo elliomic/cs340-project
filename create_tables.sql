@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS Address;
 DROP TABLE IF EXISTS Employee;
 
 DROP PROCEDURE IF EXISTS UpdateAddressCustomer;
+DROP PROCEDURE IF EXISTS UpdateAddressEmployee;
 DROP PROCEDURE IF EXISTS CheckValidState;
 
 DELIMITER $$
@@ -26,6 +27,25 @@ CREATE PROCEDURE UpdateAddressCustomer(customerId INT, addNum INT, addStreet
 	city = addCity AND state = addSt AND zip = addZip);
 	
 	UPDATE Customer SET address_id = addressId WHERE id = customerId;
+END
+$$
+
+CREATE PROCEDURE UpdateAddressEmployee(employeeId INT, addNum INT, addStreet
+	VARCHAR(255), addAptNo INT, addCity VARCHAR(255), addSt CHAR(2), addZip DECIMAL(5))
+	BEGIN
+		DECLARE addressId INT;
+		IF NOT EXISTS(SELECT * FROM Address WHERE num = addNum AND street = addStreet AND (addAptNo IS NULL OR apt_no = addAptNo) AND city = addCity AND state = addSt AND zip = addZip) THEN
+		BEGIN
+			INSERT INTO Address (num, street, apt_no, city, state, zip)
+			VALUES (addNum, addStreet, addAptNo, addCity, addSt, addZip);
+		END;
+	END IF;
+	
+	SET addressId = (SELECT id FROM Address WHERE num = addNum AND
+	street = addStreet AND (addAptNo IS NULL OR apt_no = addAptNo) AND
+	city = addCity AND state = addSt AND zip = addZip);
+	
+	UPDATE Employee SET address_id = addressId WHERE id = customerId;
 END
 $$
 
