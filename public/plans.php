@@ -51,13 +51,13 @@
 		$plan=mysqli_fetch_row($result);
 		echo '<tr><td>';
 		if($loggedIn) {
-			echo '<a href="subscribe.php?plan=' . $plan[4] . '">';
+			echo '<a href="subscribe.php?plan=' . clean_input($plan[4]) . '">';
 		}
 		echo $plan[0];
 		if($loggedIn) {
 			echo '</a>';
 		}
-		echo '</td><td>' . $plan[2] . "</td><td>" . $plan[1] . "</td>";
+		echo '</td><td>' . clean_input($plan[2]) . "</td><td>" . clean_input($plan[1]) . "</td>";
 		
 		if($loggedIn) {
 			echo "<td>";
