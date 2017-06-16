@@ -37,13 +37,6 @@ include 'connectvarsEECS.php';
 		echo '<input type="hidden" name="plan" value="' . clean_input($planId) . '">';
 		echo '<br>Address to subscribe at:<br><br>';
 		
-		// echo 'Number: <input type="text" name="num" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[2]) . '><br>';
-		// echo 'Street: <input type="text" name="street" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[3]) . '"><br>';
-		// echo 'Apt. No.: <input type="text" name="apt" autocomplete=off title="3 to 20 characters" value=' . clean_input($userInfo[4]) . '><br>';
-		// echo 'City: <input type="text" name="city" autocomplete=off required title="3 to 20 characters" value="' . clean_input($userInfo[5]) . '"><br>';
-		// echo 'State: <input type="text" name="state" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[6]) . '><br>';
-		// echo 'Zip: <input type="text" name="zip" autocomplete=off required title="3 to 20 characters" value=' . clean_input($userInfo[7]) . '><br>';
-		
 		echo clean_input($userInfo[2]) . ' ' . clean_input($userInfo[3]);
 		if(clean_input($userInfo[4]) != '') {
 			echo '#' . clean_input($addressInfo[2]);
@@ -64,9 +57,9 @@ include 'connectvarsEECS.php';
 				$thisCard = mysqli_fetch_row($result);
 				echo '<option value = "' . clean_input($thisCard[0]) . '">' . clean_input($thisCard[2]) . ' ending in ' . substr((string)clean_input($thisCard[3]), -4) . '</option>';
 			}
-			
-			echo '<input type="submit" name="action" value="Subscribe">';			
-			echo '</select>';
+			echo '</select>';			
+			echo '<div class="x-flex__content"><input type="submit" name="action" value="Subscribe" class="x-button--solid"></div>';
+
 		} else {
 			echo 'Please <a href="account.php">add a card</a> before subscribing to a plan.';
 		}		
@@ -74,18 +67,7 @@ include 'connectvarsEECS.php';
 		echo '</form>';
 			
 		mysqli_free_result($result);
-		
 		mysqli_close($conn);
 	}
-
-
 ?>
-
-
-
-
-
-
-
-
 <?php include '_footer.php' ?>
