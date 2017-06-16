@@ -30,20 +30,21 @@
 		header('Location: ./badstate.php');
 	} else {
 		header('Location: ./account.php');
-	}
-	//
-	if($_POST['name'] != '') {
-		$query = "UPDATE Customer SET name = '" . $name . "' WHERE id = " . $_SESSION['id'];
+		//
+		if($_POST['name'] != '') {
+			$query = "UPDATE Customer SET name = '" . $name . "' WHERE id = " . $_SESSION['id'];
+			$result = mysqli_query($conn, $query);
+		}
+		//
+		if (!$result) {
+			die("Query to update name failed.");
+		}
+		//
+		$query = "CALL UpdateAddressCustomer (" . $id . ", " . $num . ", '" . $street . "', " . $apt . ", '" . $city . "', '" . $state . "', " . $zip . ")";
 		$result = mysqli_query($conn, $query);
+		//
 	}
-	//
-	if (!$result) {
-		die("Query to update name failed.");
-	}
-	//
-	$query = "CALL UpdateAddressCustomer (" . $id . ", " . $num . ", '" . $street . "', " . $apt . ", '" . $city . "', '" . $state . "', " . $zip . ")";
-	$result = mysqli_query($conn, $query);
-	//
+
 	mysqli_close($conn);
 	?>
 	
